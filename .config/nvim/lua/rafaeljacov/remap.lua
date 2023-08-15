@@ -20,4 +20,4 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set('x', '<leader>p', "\"_dP", {desc = "Paste and Yank"})
+vim.keymap.set('x', '<leader>p', "\"_dP", {desc = "Paste and retain register"})
