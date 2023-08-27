@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
     use 'nvim-lualine/lualine.nvim'
+    use 'lervag/vimtex'
     use {
         'lewis6991/gitsigns.nvim',
         config = function ()
@@ -44,7 +45,7 @@ return require('packer').startup(function(use)
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lua'},     -- Required
+            {'hrsh7th/cmp-nvim-lua'},
             {'hrsh7th/cmp-buffer'},
             { 'saadparwaiz1/cmp_luasnip' },
             {'hrsh7th/cmp-path'},

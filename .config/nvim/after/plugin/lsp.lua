@@ -3,7 +3,9 @@ local lsp = require('lsp-zero').preset({})
 lsp.ensure_installed({
     'tsserver',
     'eslint',
-    'rust_analyzer'
+    'clangd',
+    'rust_analyzer',
+    'ltex'
 })
 
 lsp.on_attach(function(client, bufnr)
