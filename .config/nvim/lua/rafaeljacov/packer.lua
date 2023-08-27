@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use 'nvim-lualine/lualine.nvim'
     use 'lervag/vimtex'
+    use 'barrett-ruth/live-server.nvim'
     use {
         'lewis6991/gitsigns.nvim',
         config = function ()
