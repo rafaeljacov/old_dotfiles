@@ -4,5 +4,5 @@
 	name = Rafael Jacov Medel
 	email = medelrafjac@gmail.com
 [core]
-	editor = vim --wait
+	editor = nvim
 	autocrlf = input
