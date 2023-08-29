@@ -95,7 +95,7 @@ alias vim="nvim"
 alias ls="colorls.ruby3.2"
 alias colorp="com.github.ronnydo.colorpicker"
 alias python="python3"
-wal -qi ~/.dotfiles/wallpapers/computergirl.png
+wal -qi ~/.dotfiles/wallpapers/cyber_girl.png
 neofetch --config ~/.dotfiles/neofetch-themes/normal/config2.conf
 
 source $(dirname $(gem which colorls))/tab_complete.sh

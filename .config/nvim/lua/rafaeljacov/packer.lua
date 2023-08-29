@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'AlexvZyl/nordic.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
     use "onsails/lspkind.nvim"
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'

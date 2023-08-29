@@ -17,7 +17,7 @@ require 'nordic' .setup {
     -- Override the styling of any highlight group.
     override = {
 	    LineNr = {
-		    fg = palette.yellow.bright
+		    fg = "#e60bb7"
 	    }
     },
     -- Cursorline options.  Also includes visual/selection.
@@ -49,4 +49,4 @@ require 'nordic' .setup {
     }
 }
 
-vim.cmd.colorscheme 'nordic'
+-- vim.cmd.colorscheme 'nordic'
