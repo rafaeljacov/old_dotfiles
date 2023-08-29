@@ -33,7 +33,7 @@ require("catppuccin").setup({
     custom_highlights = function (colors)
         return {
             LineNr = {
-                fg = "#dca8ff"
+                fg = "#b80479"
             }
         }
     end,
