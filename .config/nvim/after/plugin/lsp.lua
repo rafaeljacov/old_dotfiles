@@ -5,13 +5,14 @@ lsp.ensure_installed({
     'eslint',
     'clangd',
     'rust_analyzer',
-    'ltex'
+    'texlab'
 })
 
 lsp.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp.default_keymaps({buffer = bufnr})
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp.default_keymaps({ buffer = bufnr })
+    vim.keymap.set('n', '<leader><Enter>', '<Cmd>LspZeroFormat<cr>')
 end)
 
 -- (Optional) Configure lua language server for neovim
@@ -25,11 +26,11 @@ local lspkind = require('lspkind')
 
 cmp.setup({
     sources = {
-        {name = 'nvim_lsp'},
-        {name = 'buffer'},
-        {name = 'luasnip'},
-        {name = "path"},
-        {name = "nvim_lua"}
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+        { name = 'luasnip' },
+        { name = "path" },
+        { name = "nvim_lua" }
     },
     preselect = 'item',
     completion = {
@@ -38,7 +39,7 @@ cmp.setup({
     mapping = {
         -- ['<Tab>'] = cmp_action.tab_complete(),
         -- ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
         -- Ctrl+Space to trigger completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -49,8 +50,8 @@ cmp.setup({
     },
     formatting = {
         format = lspkind.cmp_format({
-            mode = 'symbol_text', -- show only symbol annotations
-            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            mode = 'symbol_text',  -- show only symbol annotations
+            maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         })
     }
