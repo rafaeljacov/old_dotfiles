@@ -39,7 +39,7 @@ cmp.setup({
     mapping = {
         -- ['<Tab>'] = cmp_action.tab_complete(),
         -- ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        -- ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
         -- Ctrl+Space to trigger completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -50,7 +50,7 @@ cmp.setup({
     },
     formatting = {
         format = lspkind.cmp_format({
-            mode = 'symbol_text',  -- show only symbol annotations
+            mode = 'symbol_text',  -- show symbol and text annotations
             maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         })
