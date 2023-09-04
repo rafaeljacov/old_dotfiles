@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/sbin:$PATH
+export PATH=/usr/sbin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -91,12 +91,16 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+export MANPAGER="sh -c 'bat -l man -p'"
+
 alias vim="nvim"
 alias ls="colorls.ruby3.2"
 alias colorp="com.github.ronnydo.colorpicker"
 alias python="python3"
+alias neofetch="neofetch --config ~/.dotfiles/neofetch-themes/normal/config2.conf"
+
+# set terminal colorscheme to match colorscheme of specified image:
 wal -qi ~/.dotfiles/wallpapers/cyber_girl.png
-neofetch --config ~/.dotfiles/neofetch-themes/normal/config2.conf
 
 source $(dirname $(gem which colorls))/tab_complete.sh
 # export MANPATH="/usr/local/man:$MANPATH"
