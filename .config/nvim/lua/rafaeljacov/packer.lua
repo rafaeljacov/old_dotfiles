@@ -2,9 +2,13 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+
+    -- Color Schemes
+    use "tiagovla/tokyodark.nvim"
     use 'AlexvZyl/nordic.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
+
+    use 'wbthomason/packer.nvim'
     use "onsails/lspkind.nvim"
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
