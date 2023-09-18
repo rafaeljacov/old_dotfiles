@@ -13,7 +13,7 @@ require("bufferline").setup{
     }
 }
 
-vim.keymap.set({'v', 'n' }, '<C-x>', vim.cmd.bd)
+vim.keymap.set({'v', 'n' }, '<leader>x', vim.cmd.bd, {desc = 'Close Current Buffer'})
 vim.keymap.set({'v', 'n'}, '<Tab>', '<Cmd>BufferLineCycleNext<cr>')
 vim.keymap.set({'v', 'n'}, '<S-Tab>', '<Cmd>BufferLineCyclePrev<cr>')
 
