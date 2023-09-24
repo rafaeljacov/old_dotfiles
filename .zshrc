@@ -92,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export MANPAGER="sh -c 'bat -l man -p'"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 alias vim="nvim"
 alias ls="colorls.ruby3.2"

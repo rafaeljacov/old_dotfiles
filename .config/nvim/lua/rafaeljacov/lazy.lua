@@ -1,49 +1,48 @@
-vim.cmd [[packadd packer.nvim]]
+vim.g.mapleader = " "
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself
+return require('lazy').setup({
 
     -- Color Schemes
-    use "tiagovla/tokyodark.nvim"
-    use 'AlexvZyl/nordic.nvim'
-    use { "catppuccin/nvim", as = "catppuccin" }
+    'tiagovla/tokyodark.nvim',
+    'AlexvZyl/nordic.nvim',
+    { 'catppuccin/nvim', name = 'catppuccin' },
 
-    use 'wbthomason/packer.nvim'
-    use "onsails/lspkind.nvim"
-    use 'mbbill/undotree'
-    use 'tpope/vim-fugitive'
-    use 'nvim-lualine/lualine.nvim'
-    use 'lervag/vimtex'
-    use 'barrett-ruth/live-server.nvim'
-    use {
+    'nvimdev/lspsaga.nvim',
+    'onsails/lspkind.nvim',
+    'mbbill/undotree',
+    'tpope/vim-fugitive',
+    'nvim-lualine/lualine.nvim',
+    'lervag/vimtex',
+    'barrett-ruth/live-server.nvim',
+    {
         'lewis6991/gitsigns.nvim',
         config = function ()
             require('gitsigns').setup()
         end
-    }
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use {
+    },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-        requires = {
+        build = ':TSUpdate',
+        dependencies = {
             'JoosepAlviste/nvim-ts-context-commentstring'
         }
-    }
-    use {
+    },
+    {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
-    }
-    use {
+    },
+    {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
-    use {
+        dependencies = { {'nvim-lua/plenary.nvim'} }
+    },
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
-        requires = {
+        dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
             {'williamboman/mason.nvim'},           -- Optional
@@ -56,51 +55,47 @@ return require('packer').startup(function(use)
             { 'saadparwaiz1/cmp_luasnip' },
             {'hrsh7th/cmp-path'},
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip', requires = {
-                { "rafamadriz/friendly-snippets" }
+            {'L3MON4D3/LuaSnip', dependencies = {
+                { 'rafamadriz/friendly-snippets' }
             }},     -- Required
         }
-    }
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
-    use "windwp/nvim-ts-autotag"
-    use({
-        "kylechui/nvim-surround",
-        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    },
+    {
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup {} end
+    },
+    'windwp/nvim-ts-autotag',
+    {
+        'kylechui/nvim-surround',
+        tag = '*', -- Use for stability; omit to use `main` branch for the latest features
         config = function()
-            require("nvim-surround").setup({
+            require('nvim-surround').setup({
                 -- Configuration here, or leave empty to use defaults
             })
         end
-    })
-    use {
+    },
+    {
         'nvim-tree/nvim-tree.lua',
-        requires = {
+        dependencies = {
             'nvim-tree/nvim-web-devicons', -- optional
         },
-    }
-    use {'akinsho/bufferline.nvim', tag = "*"}
-    use {
-        "folke/which-key.nvim",
+    },
+    {'akinsho/bufferline.nvim', version = '*'},
+    {
+        'folke/which-key.nvim',
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 500
-            require("which-key").setup {}
+            require('which-key').setup {}
         end
-    }
-    use {
+    },
+    {
         'norcalli/nvim-colorizer.lua',
         config = function ()
             require('colorizer').setup()
         end
-    }
-    use ({
-        'nvimdev/lspsaga.nvim',
-        after = 'nvim-lspconfig',
-    })
-    use {
+    },
+    {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
         config = function()
@@ -108,6 +103,6 @@ return require('packer').startup(function(use)
                 -- config
             }
         end,
-        requires = {'nvim-tree/nvim-web-devicons'}
-    }
-end)
+        dependencies = {'nvim-tree/nvim-web-devicons'}
+    },
+})
