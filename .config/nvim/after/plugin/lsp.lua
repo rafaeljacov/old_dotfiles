@@ -26,6 +26,7 @@ local lspkind = require('lspkind')
 
 cmp.setup({
     sources = {
+        { name = 'vim-dadbod-completion' },
         { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'luasnip' },

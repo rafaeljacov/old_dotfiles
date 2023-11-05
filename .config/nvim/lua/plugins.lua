@@ -1,7 +1,4 @@
-vim.g.mapleader = " "
-
-return require('lazy').setup({
-
+return {
     -- Color Schemes
     'tiagovla/tokyodark.nvim',
     'AlexvZyl/nordic.nvim',
@@ -15,6 +12,24 @@ return require('lazy').setup({
     'lervag/vimtex',
     'barrett-ruth/live-server.nvim',
     {
+        'kristijanhusak/vim-dadbod-ui',
+        dependencies = {
+            { 'tpope/vim-dadbod', lazy = true },
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+        },
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer',
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+            vim.keymap.set('n', '<leader>DB', '<Cmd>DBUIToggle<cr>')
+        end,
+    },
+    {
         'lewis6991/gitsigns.nvim',
         config = function ()
             require('gitsigns').setup()
@@ -26,6 +41,21 @@ return require('lazy').setup({
         build = ':TSUpdate',
         dependencies = {
             'JoosepAlviste/nvim-ts-context-commentstring'
+        }
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
         }
     },
     {
@@ -105,4 +135,4 @@ return require('lazy').setup({
         end,
         dependencies = {'nvim-tree/nvim-web-devicons'}
     },
-})
+}
