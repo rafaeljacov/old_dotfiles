@@ -1,28 +1,60 @@
-local lsp = require('lsp-zero').preset({})
+local lsp_zero = require('lsp-zero')
 
-lsp.ensure_installed({
+lsp_zero.on_attach(function(client, bufnr)
+-- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
     'tsserver',
+    'emmet_ls',
+    'html',
     'eslint',
     'clangd',
     'rust_analyzer',
     'texlab'
+},
+  handlers = {
+    lsp_zero.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp_zero.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+  }
 })
 
-lsp.on_attach(function(client, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
-    lsp.default_keymaps({ buffer = bufnr })
-    vim.keymap.set('n', '<leader><Enter>', '<Cmd>LspZeroFormat<cr>')
-end)
-
--- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-lsp.setup()
+-- local lsp = require('lsp-zero').preset({})
+--
+-- lsp.ensure_installed({
+--     'tsserver',
+--     'emmet_ls',
+--     'html',
+--     'eslint',
+--     'clangd',
+--     'rust_analyzer',
+--     'texlab'
+-- })
+--
+-- lsp.on_attach(function(client, bufnr)
+--     -- see :help lsp-zero-keybindings
+--     -- to learn the available actions
+--     lsp.default_keymaps({ buffer = bufnr })
+--     vim.keymap.set('n', '<leader><Enter>', '<Cmd>LspZeroFormat<cr>')
+-- end)
+--
+-- -- (Optional) Configure lua language server for neovim
+-- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+--
+-- lsp.setup()
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local lspkind = require('lspkind')
+
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
     sources = {
@@ -37,18 +69,18 @@ cmp.setup({
     completion = {
         completeopt = 'menu,menuone,noinsert'
     },
-    mapping = {
-        -- ['<Tab>'] = cmp_action.tab_complete(),
-        -- ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-        -- ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    mapping = cmp.mapping.preset.insert({
+        -- confirm completion
+        ['<C-y>'] = cmp.mapping.confirm({select = true}),
 
-        -- Ctrl+Space to trigger completion menu
+        -- scroll up and down the documentation window
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+
         ['<C-Space>'] = cmp.mapping.complete(),
-
-        -- Navigate between snippet placeholder
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
         ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-    },
+    }),
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol_text',  -- show symbol and text annotations

@@ -11,6 +11,9 @@ return {
     'nvim-lualine/lualine.nvim',
     'lervag/vimtex',
     'barrett-ruth/live-server.nvim',
+    'jay-babu/mason-nvim-dap.nvim',
+    'theHamsta/nvim-dap-virtual-text',
+    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
     {
         'kristijanhusak/vim-dadbod-ui',
         dependencies = {
@@ -26,7 +29,7 @@ return {
         init = function()
             -- Your DBUI configuration
             vim.g.db_ui_use_nerd_fonts = 1
-            vim.keymap.set('n', '<leader>DB', '<Cmd>DBUIToggle<cr>')
+            vim.keymap.set('n', '<leader>Db', '<Cmd>DBUIToggle<cr>')
         end,
     },
     {
@@ -43,21 +46,21 @@ return {
             'JoosepAlviste/nvim-ts-context-commentstring'
         }
     },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = {
-            -- add any options here
-        },
-        dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
-        }
-    },
+    -- {
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     opts = {
+    --         -- add any options here
+    --     },
+    --     dependencies = {
+    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --         "MunifTanjim/nui.nvim",
+    --         -- OPTIONAL:
+    --         --   `nvim-notify` is only needed, if you want to use the notification view.
+    --         --   If not available, we use `mini` as the fallback
+    --         "rcarriga/nvim-notify",
+    --     }
+    -- },
     {
         'numToStr/Comment.nvim',
         config = function()
@@ -71,7 +74,7 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
+        branch = 'v3.x',
         dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
@@ -96,10 +99,11 @@ return {
     },
     'windwp/nvim-ts-autotag',
     {
-        'kylechui/nvim-surround',
-        tag = '*', -- Use for stability; omit to use `main` branch for the latest features
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
         config = function()
-            require('nvim-surround').setup({
+            require("nvim-surround").setup({
                 -- Configuration here, or leave empty to use defaults
             })
         end

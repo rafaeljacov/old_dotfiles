@@ -1,6 +1,7 @@
 require("lspsaga").setup({})
 
 vim.keymap.set({'v', 'n' }, "<leader>t", "<Cmd>Lspsaga term_toggle<cr>", {desc = 'Toggle Terminal'})
+vim.keymap.set({'v', 'n' }, "<leader>o", "<Cmd>Lspsaga outline<cr>", {desc = 'Project Outline'})
 
 vim.keymap.set('n', '[d', "<Cmd>Lspsaga diagnostic_jump_prev<cr>", {desc = 'Previous Diagnostic'})
 vim.keymap.set('n', ']d', "<Cmd>Lspsaga diagnostic_jump_next<cr>", {desc = 'Next Diagnostic'})
