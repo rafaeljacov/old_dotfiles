@@ -129,6 +129,6 @@ return {
         config = true,
         init = function()
             require('live-server').setup()
-        end        
+        end
     },
 }
