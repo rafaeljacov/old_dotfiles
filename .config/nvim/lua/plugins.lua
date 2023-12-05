@@ -10,7 +10,6 @@ return {
     'tpope/vim-fugitive',
     'nvim-lualine/lualine.nvim',
     'lervag/vimtex',
-    'barrett-ruth/live-server.nvim',
     'jay-babu/mason-nvim-dap.nvim',
     'theHamsta/nvim-dap-virtual-text',
     { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
@@ -46,21 +45,6 @@ return {
             'JoosepAlviste/nvim-ts-context-commentstring'
         }
     },
-    -- {
-    --     "folke/noice.nvim",
-    --     event = "VeryLazy",
-    --     opts = {
-    --         -- add any options here
-    --     },
-    --     dependencies = {
-    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    --         "MunifTanjim/nui.nvim",
-    --         -- OPTIONAL:
-    --         --   `nvim-notify` is only needed, if you want to use the notification view.
-    --         --   If not available, we use `mini` as the fallback
-    --         "rcarriga/nvim-notify",
-    --     }
-    -- },
     {
         'numToStr/Comment.nvim',
         config = function()
@@ -138,5 +122,13 @@ return {
             }
         end,
         dependencies = {'nvim-tree/nvim-web-devicons'}
+    },
+    {
+        'barrett-ruth/live-server.nvim',
+        build = "npm i -g live-server",
+        config = true,
+        init = function()
+            require('live-server').setup()
+        end        
     },
 }
