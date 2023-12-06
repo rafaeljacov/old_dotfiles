@@ -27,30 +27,6 @@ require('mason-lspconfig').setup({
   }
 })
 
--- local lsp = require('lsp-zero').preset({})
---
--- lsp.ensure_installed({
---     'tsserver',
---     'emmet_ls',
---     'html',
---     'eslint',
---     'clangd',
---     'rust_analyzer',
---     'texlab'
--- })
---
--- lsp.on_attach(function(client, bufnr)
---     -- see :help lsp-zero-keybindings
---     -- to learn the available actions
---     lsp.default_keymaps({ buffer = bufnr })
---     vim.keymap.set('n', '<leader><Enter>', '<Cmd>LspZeroFormat<cr>')
--- end)
---
--- -- (Optional) Configure lua language server for neovim
--- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
---
--- lsp.setup()
-
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local lspkind = require('lspkind')
