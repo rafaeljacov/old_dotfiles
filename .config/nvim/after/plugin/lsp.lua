@@ -4,7 +4,10 @@ lsp_zero.on_attach(function(client, bufnr)
 -- see :help lsp-zero-keybindings
   -- to learn the available actions
   lsp_zero.default_keymaps({buffer = bufnr})
+  lsp_zero.highlight_symbol(client, bufnr)
 end)
+
+lsp_zero.setup_servers({'tsserver', 'rust_analyzer', 'clangd', 'cssls', 'pyright', 'html'})
 
 vim.keymap.set('n', '<leader><CR>', '<Cmd>LspZeroFormat<cr>')
 
