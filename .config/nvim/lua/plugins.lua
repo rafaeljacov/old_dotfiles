@@ -33,9 +33,7 @@ return {
     },
     {
         'lewis6991/gitsigns.nvim',
-        config = function ()
-            require('gitsigns').setup()
-        end
+        opts = {}
     },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
     {
@@ -47,12 +45,10 @@ return {
     },
     {
         'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
+        opts = {}
     },
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        'nvim-telescope/telescope.nvim', version = '0.1.5',
         -- or                            , branch = '0.1.x',
         dependencies = { {'nvim-lua/plenary.nvim'} }
     },
@@ -79,18 +75,15 @@ return {
     },
     {
         'windwp/nvim-autopairs',
-        config = function() require('nvim-autopairs').setup {} end
+        event = "InsertEnter",
+        opts = {}
     },
     'windwp/nvim-ts-autotag',
     {
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
-        end
+        opts = {}
     },
     {
         'nvim-tree/nvim-tree.lua',
@@ -109,18 +102,12 @@ return {
     },
     {
         'norcalli/nvim-colorizer.lua',
-        config = function ()
-            require('colorizer').setup()
-        end
+        opts = {}
     },
     {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
-        config = function()
-            require('dashboard').setup {
-                -- config
-            }
-        end,
+        opts = {},
         dependencies = {'nvim-tree/nvim-web-devicons'}
     },
     {
