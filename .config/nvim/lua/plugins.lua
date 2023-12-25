@@ -117,4 +117,8 @@ return {
         ft = { 'html' },
         lazy = true
     },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+    }
 }
