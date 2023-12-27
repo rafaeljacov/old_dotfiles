@@ -7,7 +7,7 @@ lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.highlight_symbol(client, bufnr)
 end)
 
-lsp_zero.setup_servers({'tsserver', 'rust_analyzer', 'clangd', 'cssls', 'pyright', 'html'})
+lsp_zero.setup_servers({'tsserver', 'rust_analyzer', 'clangd', 'cssls', 'html'})
 
 vim.keymap.set('n', '<leader><CR>', '<Cmd>LspZeroFormat<cr>')
 
