@@ -2,7 +2,7 @@ return {
     -- Color Schemes
     'tiagovla/tokyodark.nvim',
     'AlexvZyl/nordic.nvim',
-    { 'catppuccin/nvim', name = 'catppuccin' },
+    { 'catppuccin/nvim',      name = 'catppuccin' },
 
     'nvimdev/lspsaga.nvim',
     'onsails/lspkind.nvim',
@@ -12,11 +12,11 @@ return {
     'lervag/vimtex',
     'jay-babu/mason-nvim-dap.nvim',
     'theHamsta/nvim-dap-virtual-text',
-    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
+    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
     {
         'kristijanhusak/vim-dadbod-ui',
         dependencies = {
-            { 'tpope/vim-dadbod', lazy = true },
+            { 'tpope/vim-dadbod',                     lazy = true },
             { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
         },
         cmd = {
@@ -48,29 +48,33 @@ return {
         opts = {}
     },
     {
-        'nvim-telescope/telescope.nvim', version = '0.1.5',
+        'nvim-telescope/telescope.nvim',
+        version = '0.1.5',
         -- or                            , branch = '0.1.x',
-        dependencies = { {'nvim-lua/plenary.nvim'} }
+        dependencies = { { 'nvim-lua/plenary.nvim' } }
     },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         dependencies = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            { 'neovim/nvim-lspconfig' },             -- Required
+            { 'williamboman/mason.nvim' },           -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lua'},
-            {'hrsh7th/cmp-buffer'},
+            { 'hrsh7th/nvim-cmp' }, -- Required
+            { 'hrsh7th/cmp-nvim-lua' },
+            { 'hrsh7th/cmp-buffer' },
             { 'saadparwaiz1/cmp_luasnip' },
-            {'hrsh7th/cmp-path'},
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip', dependencies = {
-                { 'rafamadriz/friendly-snippets' }
-            }},     -- Required
+            { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            {
+                'L3MON4D3/LuaSnip',
+                dependencies = {
+                    { 'rafamadriz/friendly-snippets' }
+                }
+            }, -- Required
         }
     },
     {
@@ -91,7 +95,7 @@ return {
             'nvim-tree/nvim-web-devicons', -- optional
         },
     },
-    {'akinsho/bufferline.nvim', version = '*'},
+    { 'akinsho/bufferline.nvim',                  version = '*' },
     {
         'folke/which-key.nvim',
         config = function()
@@ -108,7 +112,7 @@ return {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
         opts = {},
-        dependencies = {'nvim-tree/nvim-web-devicons'}
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     {
         'barrett-ruth/live-server.nvim',
@@ -120,5 +124,12 @@ return {
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {
+            exclude = { filetypes = { 'dashboard' } }
+        },
     }
 }
