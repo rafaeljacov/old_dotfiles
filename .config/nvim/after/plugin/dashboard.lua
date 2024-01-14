@@ -22,15 +22,9 @@ require('dashboard').setup {
                 icon = '🔍',
                 icon_hl = '@variable',
                 desc = 'Files',
-                group = 'Label',
+                group = 'Title',
                 action = 'Telescope find_files',
                 key = 'f',
-            },
-            {
-                desc = '🩺Check Health',
-                group = 'Title',
-                action = 'checkhealth nvim',
-                key = 'c',
             },
             {
                 desc = '⚙️ Config',
