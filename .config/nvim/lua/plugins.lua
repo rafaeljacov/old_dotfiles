@@ -109,7 +109,7 @@ return {
         opts = {}
     },
     {
-        'glepnir/dashboard-nvim',
+        'nvimdev/dashboard-nvim',
         event = 'VimEnter',
         opts = {},
         dependencies = { 'nvim-tree/nvim-web-devicons' }
