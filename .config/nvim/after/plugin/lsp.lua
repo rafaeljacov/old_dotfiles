@@ -1,4 +1,5 @@
 local lsp_zero = require('lsp-zero')
+local lspconfig = require('lspconfig')
 
 lsp_zero.on_attach(function(client, bufnr)
 -- see :help lsp-zero-keybindings
@@ -21,7 +22,11 @@ require('mason-lspconfig').setup({
     'eslint',
     'clangd',
     'rust_analyzer',
-    'texlab'
+    'texlab',
+    'gopls',
+    'pyright',
+    'bashls',
+    'lua_ls'
 },
   handlers = {
     lsp_zero.default_setup,
@@ -71,3 +76,15 @@ cmp.setup({
         })
     }
 })
+
+lspconfig.gopls.setup {
+    cmd = {'gopls'},
+    settings = {
+        gopls = {
+            usePlaceholders = true,
+            analyses = {
+                unusedparams = true
+            }
+        }
+    }
+}
