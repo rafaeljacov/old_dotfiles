@@ -4,6 +4,7 @@ return {
     'AlexvZyl/nordic.nvim',
     { 'catppuccin/nvim',      name = 'catppuccin' },
 
+    'Wansmer/treesj',
     'nvimdev/lspsaga.nvim',
     'onsails/lspkind.nvim',
     'mbbill/undotree',
@@ -131,5 +132,5 @@ return {
         opts = {
             exclude = { filetypes = { 'dashboard' } }
         },
-    }
+    },
 }
