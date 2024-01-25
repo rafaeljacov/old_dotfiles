@@ -1,7 +1,6 @@
 require("lspsaga").setup({})
 
-vim.keymap.set({'v', 'n' }, "<leader>t", "<Cmd>Lspsaga term_toggle<cr>", {desc = 'Toggle Terminal'})
-vim.keymap.set({'v', 'n' }, "<leader>o", "<Cmd>Lspsaga outline<cr>", {desc = 'Project Outline'})
+vim.keymap.set('n', "<leader>t", "<Cmd>Lspsaga term_toggle<cr>", {desc = 'Toggle Terminal'})
 
 vim.keymap.set('n', '[d', "<Cmd>Lspsaga diagnostic_jump_prev<cr>", {desc = 'Previous Diagnostic'})
 vim.keymap.set('n', ']d', "<Cmd>Lspsaga diagnostic_jump_next<cr>", {desc = 'Next Diagnostic'})
@@ -18,6 +17,7 @@ vim.keymap.set('n', 'gt', '<Cmd>Lspsaga goto_type_definition<cr>', {desc = 'Go t
 
 vim.keymap.set('n', '<leader>pd', '<Cmd>Lspsaga peek_definition<cr>', {desc = 'Peek Definition'})
 vim.keymap.set('n', '<leader>pt', '<Cmd>Lspsaga peek_type_definition<cr>', {desc = 'Peek Type Definition'})
+vim.keymap.set('n', "<leader>po", "<Cmd>Lspsaga outline<cr>", {desc = 'Project Outline'})
 
 vim.keymap.set('n', '<leader>?', '<Cmd>Lspsaga code_action<cr>', {desc = 'Code Actions'})
 
