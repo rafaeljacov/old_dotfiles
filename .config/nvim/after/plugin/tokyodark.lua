@@ -2,4 +2,4 @@ require 'tokyodark'.setup{
     transparent_background = true
 }
 
-vim.cmd.colorscheme 'tokyodark'
+-- vim.cmd.colorscheme 'tokyodark'
