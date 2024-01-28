@@ -30,13 +30,13 @@ require("catppuccin").setup({
         operators = {},
     },
     color_overrides = {},
-    custom_highlights = function (colors)
-        return {
-            LineNr = {
-                fg = "#b80497"
-            }
-        }
-    end,
+    -- custom_highlights = function (colors)
+    --     return {
+    --         LineNr = {
+    --             fg = "#b80497"
+    --         }
+    --     }
+    -- end,
     integrations = {
         cmp = true,
         gitsigns = true,
