@@ -1,7 +1,7 @@
 return {
     -- Color Schemes
     'tiagovla/tokyodark.nvim',
-    { 'catppuccin/nvim', name = 'catppuccin' },
+    { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
     'Wansmer/treesj',
     'nvimdev/lspsaga.nvim',
@@ -12,6 +12,7 @@ return {
     'lervag/vimtex',
     'jay-babu/mason-nvim-dap.nvim',
     'theHamsta/nvim-dap-virtual-text',
+    'nvimtools/none-ls.nvim',
 
     { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
     {

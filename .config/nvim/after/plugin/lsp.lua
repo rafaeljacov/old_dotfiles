@@ -7,8 +7,6 @@ lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.highlight_symbol(client, bufnr)
 end)
 
-vim.keymap.set('n', '<leader><CR>', '<Cmd>LspZeroFormat<cr>')
-
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {
