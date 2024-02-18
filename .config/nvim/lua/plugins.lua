@@ -96,7 +96,6 @@ return {
             'nvim-tree/nvim-web-devicons', -- optional
         },
     },
-    { 'akinsho/bufferline.nvim',                  version = '*' },
     {
         'folke/which-key.nvim',
         config = function()
