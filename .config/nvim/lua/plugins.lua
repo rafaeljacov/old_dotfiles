@@ -1,4 +1,6 @@
 return {
+    { "folke/neodev.nvim", opts = {} },
+
     -- Color Schemes
     'tiagovla/tokyodark.nvim',
     { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
@@ -10,11 +12,13 @@ return {
     'tpope/vim-fugitive',
     'nvim-lualine/lualine.nvim',
     'lervag/vimtex',
-    'jay-babu/mason-nvim-dap.nvim',
-    'theHamsta/nvim-dap-virtual-text',
     'nvimtools/none-ls.nvim',
 
+    -- Debugger
     { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+    'jay-babu/mason-nvim-dap.nvim',
+    'theHamsta/nvim-dap-virtual-text',
+
     {
         'kristijanhusak/vim-dadbod-ui',
         dependencies = {
