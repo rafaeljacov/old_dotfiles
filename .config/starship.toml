@@ -1,0 +1,73 @@
+format = """
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$c\
+$rust\
+$java\
+$golang\
+$directory $fill $battery $time
+$os$username$hostname$character
+"""
+
+[fill]
+symbol = ' '
+
+[character]
+success_symbol = '[➜](bold #42fc70) '
+error_symbol = '[✗](bold #fc4267) '
+
+[hostname]
+ssh_only = false
+format = '[$ssh_symbol](bold blue)@[$hostname](bold #42fc70) '
+ssh_symbol = ' 🌏 '
+
+[os]
+format = "[$symbol]($style)"
+style = "bold #42fc70"
+disabled = false
+
+[os.symbols]
+openSUSE = " "
+
+[username]
+style_user = '#facd89 bold'
+style_root = 'black bold'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[time]
+format = '[$time]($style)'
+disabled = false
+style = '#facd89 bold'
+
+[battery]
+full_symbol = '󰁹 '
+charging_symbol = '󰂄 '
+
+[[battery.display]]
+threshold = 15
+style = 'bold #fa8989'
+discharging_symbol = '󰁺 '
+
+[[battery.display]]
+threshold = 25
+style = 'bold #fac389'
+discharging_symbol = '󰁼 '
+
+[[battery.display]]
+threshold = 50
+style = 'bold #cffa89'
+discharging_symbol = '󰁾 '
+
+[[battery.display]]
+threshold = 75
+style = 'bold #89faa3'
+discharging_symbol = '󰂀 '
+
+[[battery.display]]
+threshold = 100
+style = 'bold #89c7fa'
+discharging_symbol = '󰂂 '
