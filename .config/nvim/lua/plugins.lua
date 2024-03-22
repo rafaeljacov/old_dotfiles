@@ -11,7 +11,6 @@ return {
     'mbbill/undotree',
     'tpope/vim-fugitive',
     'nvim-lualine/lualine.nvim',
-    'lervag/vimtex',
     'nvimtools/none-ls.nvim',
 
     -- Debugger
