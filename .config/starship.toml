@@ -24,7 +24,7 @@ format = '[$ssh_symbol](bold blue)@[$hostname](bold #42fc70) '
 ssh_symbol = ' 🌏 '
 
 [os]
-format = "[$symbol]($style)"
+format = "[$symbol]($style) "
 style = "bold #42fc70"
 disabled = false
 
@@ -70,4 +70,4 @@ discharging_symbol = '󰂀 '
 [[battery.display]]
 threshold = 100
 style = 'bold #89c7fa'
-discharging_symbol = '󰂂 '
+discharging_symbol = '󰁹 '
