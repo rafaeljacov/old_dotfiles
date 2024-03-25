@@ -13,10 +13,24 @@ if status is-interactive
     starship init fish | source
 end
 
+function fish_user_key_bindings
+    # Execute this once per mode that emacs bindings should be used in
+    fish_default_key_bindings -M insert
+
+    # Then execute the vi-bindings so they take precedence when there's a conflict.
+    # Without --no-erase fish_vi_key_bindings will default to
+    # resetting all bindings.
+    # The argument specifies the initial mode (insert, "default" or visual).
+    fish_vi_key_bindings --no-erase insert
+end
+
 set -g fish_greeting
 set -gx PATH $PATH:$HOME/.cargo/bin
 set -gx VISUAL nvim
 set -gx EDITOR nvim
+
+# Enable node & npm while ignoring the stdout
+nvm use latest > /dev/null
 
 # Pokemon Random Sprite
 krabby random
