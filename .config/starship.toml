@@ -71,3 +71,6 @@ discharging_symbol = '󰂀 '
 threshold = 100
 style = 'bold #89c7fa'
 discharging_symbol = '󰁹 '
+
+[python]
+symbol = " "
