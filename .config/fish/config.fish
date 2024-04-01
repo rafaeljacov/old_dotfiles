@@ -1,5 +1,4 @@
 abbr vim nvim
-abbr python python3.12
 
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
