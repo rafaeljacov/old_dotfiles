@@ -32,4 +32,4 @@ set -gx EDITOR nvim
 nvm use latest > /dev/null
 
 # Pokemon Random Sprite
-krabby random
+krabby random --no-title
