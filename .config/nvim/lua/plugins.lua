@@ -3,7 +3,7 @@ return {
 
     -- Color Schemes
     'tiagovla/tokyodark.nvim',
-    { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+    { 'catppuccin/nvim',   name = 'catppuccin', priority = 1000 },
 
     'Wansmer/treesj',
     'nvimdev/lspsaga.nvim',
@@ -11,7 +11,6 @@ return {
     'mbbill/undotree',
     'tpope/vim-fugitive',
     'nvim-lualine/lualine.nvim',
-    'nvimtools/none-ls.nvim',
 
     -- Debugger
     { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
@@ -19,9 +18,15 @@ return {
     'theHamsta/nvim-dap-virtual-text',
 
     {
+        'nvimtools/none-ls.nvim',
+        dependencies = {
+            'nvimtools/none-ls-extras.nvim',
+        }
+    },
+    {
         'kristijanhusak/vim-dadbod-ui',
         dependencies = {
-            { 'tpope/vim-dadbod',                     lazy = true },
+            { 'tpope/vim-dadbod', lazy = true },
             { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
         },
         cmd = {
@@ -40,7 +45,11 @@ return {
         'lewis6991/gitsigns.nvim',
         opts = {}
     },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build =
+        'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    },
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
@@ -138,7 +147,7 @@ return {
     },
     {
         "epwalsh/obsidian.nvim",
-        version = "*",  -- recommended, use latest release instead of latest commit
+        version = "*", -- recommended, use latest release instead of latest commit
         lazy = true,
         ft = "markdown"
     },

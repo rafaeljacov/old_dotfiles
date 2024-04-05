@@ -69,9 +69,11 @@ cmp.setup({
         ['<C-b>'] = cmp_action.luasnip_jump_backward(),
     }),
     formatting = {
+        fields = { 'abbr', 'kind' },
+        expandable_indicator = true,
         format = lspkind.cmp_format({
             mode = 'symbol_text',  -- show symbol and text annotations
-            maxwidth = 70,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            maxwidth = 70,         -- prevent the popup from showing more than provided characters
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         })
     }
