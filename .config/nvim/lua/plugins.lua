@@ -26,7 +26,7 @@ return {
     {
         'kristijanhusak/vim-dadbod-ui',
         dependencies = {
-            { 'tpope/vim-dadbod', lazy = true },
+            { 'tpope/vim-dadbod',                     lazy = true },
             { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
         },
         cmd = {
@@ -47,8 +47,7 @@ return {
     },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
-        build =
-        'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+        build = 'make',
     },
     {
         'nvim-treesitter/nvim-treesitter',
