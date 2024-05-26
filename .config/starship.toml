@@ -7,6 +7,7 @@ $c\
 $rust\
 $java\
 $golang\
+$lua\
 $directory $fill $battery $time
 $os$username$hostname$character
 """
@@ -74,3 +75,12 @@ discharging_symbol = '󰁹 '
 
 [python]
 symbol = " "
+
+[golang]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[rust]
+symbol = " "
