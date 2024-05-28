@@ -1,5 +1,3 @@
-vim.keymap.set({ 'i', 'n', 'v' }, "<C-s>", "<Esc><Cmd>w<cr>")
-
 vim.keymap.set('i', "<C-v>", '<Esc>"+p==')
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
