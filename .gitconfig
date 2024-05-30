@@ -8,3 +8,5 @@
 	autocrlf = input
 [alias]
 	stats = status -s
+[pull]
+	ff = only
