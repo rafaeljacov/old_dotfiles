@@ -16,7 +16,7 @@ $os$username$hostname$character
 symbol = ' '
 
 [character]
-success_symbol = '[➜](bold #42fc70) '
+success_symbol = '[❯❯](bold #42fc70) '
 error_symbol = '[✗](bold #fc4267) '
 
 [hostname]
