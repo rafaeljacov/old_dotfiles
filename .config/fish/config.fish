@@ -12,13 +12,10 @@ alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza -T --icons=auto' # list tree
 
 if status is-interactive
-    # Pokemon Random Sprite
-    krabby random --no-title
-
     # Commands to run in interactive sessions can go here
-    zoxide init --cmd cd fish | source
-    starship init fish | source
-    enable_transience
+
+    # Random Pokemon Sprite
+    krabby random --no-title
 end
 
 function fish_user_key_bindings
@@ -44,3 +41,6 @@ function starship_transient_rprompt_func
   starship module time
 end
 
+zoxide init --cmd cd fish | source
+starship init fish | source
+enable_transience
