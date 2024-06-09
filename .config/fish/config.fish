@@ -29,9 +29,6 @@ function fish_user_key_bindings
     fish_vi_key_bindings --no-erase insert
 end
 
-# Enable node & npm while ignoring the stdout
-nvm use latest > /dev/null
-
 # Transient Prompt
 function starship_transient_prompt_func
   starship module character
@@ -40,6 +37,9 @@ end
 function starship_transient_rprompt_func
   starship module time
 end
+
+# Enable node & npm while ignoring the stdout
+nvm use latest > /dev/null
 
 zoxide init --cmd cd fish | source
 starship init fish | source
