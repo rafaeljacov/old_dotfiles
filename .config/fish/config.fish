@@ -1,3 +1,8 @@
+set -g fish_greeting
+set -gx PATH $PATH:$HOME/.cargo/bin
+set -gx VISUAL nvim
+set -gx EDITOR nvim
+
 abbr vim nvim
 
 alias  l='eza -lh  --icons=auto' # long list
@@ -26,11 +31,6 @@ function fish_user_key_bindings
     # The argument specifies the initial mode (insert, "default" or visual).
     fish_vi_key_bindings --no-erase insert
 end
-
-set -g fish_greeting
-set -gx PATH $PATH:$HOME/.cargo/bin
-set -gx VISUAL nvim
-set -gx EDITOR nvim
 
 # Enable node & npm while ignoring the stdout
 nvm use latest > /dev/null
