@@ -6,7 +6,7 @@ const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 
 const date = Variable("", {
-    poll: [1000, 'date "+%H:%M:%S %b %e."'],
+    poll: [1000, 'date "+%H:%M %b %e."'],
 })
 
 export default function Bar(monitor = 0) {
@@ -24,10 +24,6 @@ export default function Bar(monitor = 0) {
     })
 }
 
-// widgets can be only assigned as a child in one container
-// so to make a reuseable widget, make it a function
-// then you can simply instantiate one by calling it
-
 function Workspaces() {
     const activeId = hyprland.active.workspace.bind("id")
     const workspaces = hyprland.bind("workspaces")
@@ -43,7 +39,6 @@ function Workspaces() {
     })
 }
 
-
 function ClientTitle() {
     return Widget.Label({
         class_name: "client-title",
@@ -57,22 +52,6 @@ function Clock() {
     return Widget.Label({
         class_name: "clock",
         label: date.bind(),
-    })
-}
-
-function Notification() {
-    const popups = notifications.bind("popups")
-    return Widget.Box({
-        class_name: "notification",
-        visible: popups.as(p => p.length > 0),
-        children: [
-            Widget.Icon({
-                icon: "preferences-system-notifications-symbolic",
-            }),
-            Widget.Label({
-                label: popups.as(p => p[0]?.summary || ""),
-            }),
-        ],
     })
 }
 
@@ -184,8 +163,7 @@ function Center() {
     return Widget.Box({
         spacing: 8,
         children: [
-            Media(),
-            // Notification(),
+            Media()
         ],
     })
 }
@@ -202,4 +180,3 @@ function Right() {
         ],
     })
 }
-
