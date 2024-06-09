@@ -2,7 +2,7 @@ const notifications = await Service.import("notifications")
 notifications.popupTimeout = 4000
 
 /** @param {import('resource:///com/github/Aylur/ags/service/notifications.js').Notification} n */
-function NotificationIcon({ app_entry, app_icon, image }) {
+function NotificationIcon({ app_entry, app_icon, image, urgency }) {
     if (image) {
         return Widget.Box({
             css: `background-image: url("${image}");`
@@ -12,7 +12,12 @@ function NotificationIcon({ app_entry, app_icon, image }) {
         })
     }
 
-    let icon = "dialog-information-symbolic"
+    let icon
+    if (urgency == 'critical') {
+        icon = "dialog-warning-symbolic"
+    } else {
+        icon = "dialog-information-symbolic"
+    }
     if (Utils.lookUpIcon(app_icon))
         icon = app_icon
 
