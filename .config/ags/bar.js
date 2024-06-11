@@ -1,5 +1,4 @@
 const hyprland = await Service.import("hyprland")
-const notifications = await Service.import("notifications")
 const mpris = await Service.import("mpris")
 const audio = await Service.import("audio")
 const battery = await Service.import("battery")
@@ -102,9 +101,6 @@ function Volume() {
         hexpand: true,
         draw_value: false,
         on_change: ({ value }) => audio.speaker.volume = value,
-        // setup: self => self.hook(audio.speaker, () => {
-        //     self.value = audio.speaker.volume || 0
-        // }),
     })
 
     return Widget.Box({
