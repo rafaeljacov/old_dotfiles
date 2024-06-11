@@ -98,12 +98,13 @@ function Volume() {
     })
 
     const slider = Widget.Slider({
+        value: audio.speaker.bind('volume').as(v => v || 0),
         hexpand: true,
         draw_value: false,
         on_change: ({ value }) => audio.speaker.volume = value,
-        setup: self => self.hook(audio.speaker, () => {
-            self.value = audio.speaker.volume || 0
-        }),
+        // setup: self => self.hook(audio.speaker, () => {
+        //     self.value = audio.speaker.volume || 0
+        // }),
     })
 
     return Widget.Box({
