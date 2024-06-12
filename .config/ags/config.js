@@ -4,7 +4,17 @@ import NotificationPopups from './widgets/notifications.js'
 const style_dir = `${App.configDir}/style`
 const widgets_dir = `${App.configDir}/widgets`
 
+App.config({
+    style: `${style_dir}/style.css`,
+    windows: [
+        Bar(0),
+        NotificationPopups()
+    ],
+})
+
 // Reload ags when modifying config and widgets
+
+/** @param {string} path **/
 function reloadAgs(path) {
     Utils.monitorFile(
         path,
@@ -30,11 +40,3 @@ Utils.monitorFile(
         App.applyCss(css)
     },
 )
-
-App.config({
-    style: `${style_dir}/style.css`,
-    windows: [
-        Bar(0),
-        NotificationPopups()
-    ],
-})
