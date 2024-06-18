@@ -9,14 +9,14 @@ $java\
 $golang\
 $lua\
 $directory $fill $battery $time
-$os$username$hostname$character
+$os$username $character
 """
 
 [fill]
 symbol = ' '
 
 [character]
-success_symbol = '[❯❯](bold #42fc70) '
+success_symbol = '[❯❯](bold #19d1bc) '
 error_symbol = '[✗](bold #fc4267) '
 
 [hostname]
@@ -26,11 +26,12 @@ ssh_symbol = ' 🌏 '
 
 [os]
 format = "[$symbol]($style) "
-style = "bold #42fc70"
+style = "bold #87c5fa"
 disabled = false
 
 [os.symbols]
 openSUSE = " "
+Gentoo = ""
 
 [username]
 style_user = '#facd89 bold'
