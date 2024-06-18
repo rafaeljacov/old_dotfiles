@@ -31,11 +31,11 @@ end
 
 # Transient Prompt
 function starship_transient_prompt_func
-  starship module character
+    starship module character
 end
 
 # Enable node & npm while ignoring the stdout
-nvm use latest > /dev/null
+nvm -s use latest
 
 zoxide init --cmd cd fish | source
 starship init fish | source
