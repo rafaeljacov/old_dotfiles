@@ -60,7 +60,12 @@ function Media() {
     const label = Utils.watch("Nothing is playing", mpris, "player-changed", () => {
         if (mpris.players[0]) {
             const { track_artists, track_title } = mpris.players[0]
-            return `${track_artists.join(", ")} - ${track_title}`
+            let media_title = `${track_artists.join(", ")} - ${track_title}`
+            if (media_title.length > 30) {
+                media_title.slice(0, 30)
+                media_title += '...'
+            }
+            return media_title
         } else {
             return "Nothing is playing"
         }
