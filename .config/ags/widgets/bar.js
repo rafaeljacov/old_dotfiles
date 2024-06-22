@@ -62,7 +62,7 @@ function Media() {
             const { track_artists, track_title } = mpris.players[0]
             let media_title = `${track_artists.join(", ")} - ${track_title}`
             if (media_title.length > 30) {
-                media_title.slice(0, 30)
+                media_title = media_title.slice(0, 30)
                 media_title += '...'
             }
             return media_title
