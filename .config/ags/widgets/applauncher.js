@@ -2,28 +2,31 @@ const { query } = await Service.import("applications")
 const WINDOW_NAME = "applauncher"
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
-const AppItem = app => Widget.Button({
-    on_clicked: () => {
-        App.closeWindow(WINDOW_NAME)
-        app.launch()
-    },
-    attribute: { app },
-    child: Widget.Box({
-        children: [
-            Widget.Icon({
-                icon: app.icon_name || "",
-                size: 42,
-            }),
-            Widget.Label({
-                class_name: "title",
-                label: app.name,
-                xalign: 0,
-                vpack: "center",
-                truncate: "end",
-            }),
-        ],
-    }),
-})
+const AppItem = app => {
+    let app_icon = Utils.lookUpIcon(app.icon_name || '')
+    return Widget.Button({
+        on_clicked: () => {
+            App.closeWindow(WINDOW_NAME)
+            app.launch()
+        },
+        attribute: { app },
+        child: Widget.Box({
+            children: [
+                Widget.Icon({
+                    icon: app_icon ? app.icon_name || "" : '',
+                    size: 42,
+                }),
+                Widget.Label({
+                    class_name: "title",
+                    label: app.name,
+                    xalign: 0,
+                    vpack: "center",
+                    truncate: "end",
+                }),
+            ],
+        }),
+    })
+}
 
 const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
     // list of application buttons
@@ -50,7 +53,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
         // to launch the first item on Enter
         on_accept: () => {
             // make sure we only consider visible (searched for) applications
-	    const results = applications.filter((item) => item.visible);
+            const results = applications.filter((item) => item.visible);
             if (results[0]) {
                 App.toggleWindow(WINDOW_NAME)
                 results[0].attribute.app.launch()
