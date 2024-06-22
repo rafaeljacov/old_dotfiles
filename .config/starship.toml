@@ -1,78 +1,113 @@
+
+# Don't print a new line at the start of the prompt
+add_newline = false
+# Pipes ╰─ ╭─
+# Powerline symbols                                     
+# Wedges 🭧🭒 🭣🭧🭓
+# Random noise 🬖🬥🬔🬗
+
+# format = """
+# $cmd_duration$username$hostname $directory $git_branch
+# $character
+# """
 format = """
-$git_branch\
-$git_status\
+$cmd_duration$directory $git_branch $fill\
 $python\
 $nodejs\
 $c\
 $rust\
 $java\
 $golang\
-$lua\
-$directory $fill $battery $time
-$os$username $character
+$lua
+$character
 """
 
 [fill]
 symbol = ' '
 
-[character]
-success_symbol = '[❯❯](bold #19d1bc) '
-error_symbol = '[✗](bold #fc4267) '
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[• ](bold fg:green) "
+error_symbol = "[• 󰅙](bold fg:red) "
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[git_branch]
+style = "bg: green"
+symbol = "󰘬"
+truncation_length = 4
+truncation_symbol = ""
+format = "• [](bold fg:green)[$symbol $branch(:$remote_branch)](fg:black bg:green)[ ](bold fg:green)"
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = " "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[git_status]
+conflicted = " 🏳 "
+ahead = " 🏎💨 "
+behind = " 😰 "
+diverged = " 😵 "
+untracked = " 🤷 ‍"
+stashed = " 📦 "
+modified = " 📝 "
+staged = '[++\($count\)](green)'
+renamed = " ✍️ "
+deleted = " 🗑 "
 
 [hostname]
 ssh_only = false
-format = '[$ssh_symbol](bold blue)@[$hostname](bold #42fc70) '
-ssh_symbol = ' 🌏 '
-
-[os]
-format = "[$symbol]($style) "
-style = "bold #87c5fa"
+format =  "[•$hostname](bg:cyan bold fg:black)[](bold fg:cyan )"
+trim_at = ".companyname.com"
 disabled = false
 
-[os.symbols]
-openSUSE = " "
-Gentoo = ""
+[line_break]
+disabled = false
+
+[memory_usage]
+disabled = true
+threshold = -1
+symbol = " "
+style = "bold dimmed green"
+
+[time]
+disabled = true
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
 
 [username]
-style_user = '#facd89 bold'
-style_root = 'black bold'
-format = '[$user]($style)'
+style_user = "bold bg:cyan fg:black"
+style_root = "red bold"
+format = "[](bold fg:cyan)[$user]($style)"
 disabled = false
 show_always = true
 
-[time]
-format = '[$time]($style)'
-disabled = false
-style = '#facd89 bold'
+[directory]
+home_symbol = "  "
+read_only = "  "
+style = "bg:green fg:black"
+truncation_length = 6
+truncation_symbol = "••/"
+format = '[](bold fg:green)[$path ]($style)[](bold fg:green)'
 
-[battery]
-full_symbol = '󰁹 '
-charging_symbol = '󰂄 '
 
-[[battery.display]]
-threshold = 15
-style = 'bold #fa8989'
-discharging_symbol = '󰁺 '
+[directory.substitutions]
+"Desktop" = "  "
+"Documents" = "  "
+"Downloads" = "  "
+"Music" = "  "
+"Pictures" = "  "
+"Videos" = "  "
 
-[[battery.display]]
-threshold = 25
-style = 'bold #fac389'
-discharging_symbol = '󰁼 '
-
-[[battery.display]]
-threshold = 50
-style = 'bold #cffa89'
-discharging_symbol = '󰁾 '
-
-[[battery.display]]
-threshold = 75
-style = 'bold #89faa3'
-discharging_symbol = '󰂀 '
-
-[[battery.display]]
-threshold = 100
-style = 'bold #89c7fa'
-discharging_symbol = '󰁹 '
+[cmd_duration]
+min_time = 0
+format = '[](bold fg:yellow)[ $duration](bold bg:yellow fg:black)[](bold fg:yellow) •• '
 
 [python]
 symbol = " "
