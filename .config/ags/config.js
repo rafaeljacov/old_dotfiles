@@ -1,6 +1,7 @@
 import Bar from './widgets/bar.js'
 import NotificationPopups from './widgets/notifications.js'
 import { applauncher } from './widgets/applauncher.js'
+import { monitor_settings } from './widgets/monitor.js'
 
 const style_dir = `${App.configDir}/style`
 
@@ -9,7 +10,8 @@ App.config({
     windows: [
         Bar(0),
         NotificationPopups(),
-        applauncher
+        applauncher,
+        monitor_settings
     ],
 })
 
