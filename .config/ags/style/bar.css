@@ -4,9 +4,6 @@ window.bar {
 }
 
 button {
-    min-width: 0;
-    padding-top: 0;
-    padding-bottom: 0;
     background-color: transparent;
 }
 
@@ -14,20 +11,28 @@ button:active {
     background-color: @theme_selected_bg_color;
 }
 
-button:hover {
-    border-bottom: 3px solid @theme_fg_color;
-}
+/* button:not(.focused):hover { */
+/*     border-bottom: 3px solid @theme_fg_color; */
+/* } */
 
 label {
     font-weight: bold;
 }
 
-.workspaces button.focused {
-    border-bottom: 3px solid @theme_selected_bg_color;
+.workspaces button {
+    padding: 0;
+    background-color: white;
+    min-height: 12px;
+    min-width: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    transition: all 0.25s ease;
 }
 
-.client-title {
-    color: #f8a76f;
+.workspaces button.focused {
+    background-color: @theme_selected_bg_color;
+    border-radius: 10px;
+    min-width: 21px;
 }
 
 .notification {

@@ -1,3 +1,5 @@
+App.addIcons(`${App.configDir}/assets`)
+
 const hyprland = await Service.import("hyprland")
 const mpris = await Service.import("mpris")
 const audio = await Service.import("audio")
@@ -5,7 +7,7 @@ const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 
 const date = Variable("", {
-    poll: [1000, 'date "+%H:%M %b %e."'],
+    poll: [1000, 'date "+%H:%M %b %e"'],
 })
 
 export default function Bar(monitor = 0) {
@@ -28,8 +30,8 @@ function Workspaces() {
     const workspaces = [1, 2, 3, 4, 5, 6].map(id =>
         Widget.Button({
             on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
-            child: Widget.Label(`${id}`),
-            class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
+            class_name: activeId.as(i => `${i === id ? "focused" : "default"}`),
+            vpack: 'center'
         })
     )
 
@@ -39,19 +41,12 @@ function Workspaces() {
     })
 }
 
-function ClientTitle() {
-    return Widget.Label({
-        class_name: "client-title",
-        label: hyprland.active.client.bind("title")
-            .as(title => title.length > 40 ? title.slice(0, 40) + '...' : title)
-    })
-}
-
 
 function Clock() {
     return Widget.Label({
         class_name: "clock",
         label: date.bind(),
+        margin_end: 7
     })
 }
 
@@ -125,7 +120,7 @@ function BatteryLabel() {
         class_name: "battery",
         visible: battery.bind("available"),
         children: [
-            Widget.Icon({ icon }),
+            Widget.Icon({ icon, margin_end: 10 }),
             Widget.LevelBar({
                 widthRequest: 140,
                 vpack: "center",
@@ -156,8 +151,14 @@ function Left() {
     return Widget.Box({
         spacing: 8,
         children: [
+            Widget.Icon({
+                icon: 'gentoo',
+                size: 21,
+                margin_start: 12,
+                margin_end: 7
+            }),
             Workspaces(),
-            ClientTitle(),
+            SysTray(),
         ],
     })
 }
@@ -179,7 +180,6 @@ function Right() {
             Volume(),
             BatteryLabel(),
             Clock(),
-            SysTray(),
         ],
     })
 }
