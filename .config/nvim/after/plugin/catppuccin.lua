@@ -31,9 +31,17 @@ require("catppuccin").setup({
     },
     color_overrides = {},
     custom_highlights = function (colors)
+        local dark = "#656a6e"
+        local light = "#e6e8eb"
         return {
+            LineNrAbove = {
+                fg = dark
+            },
             LineNr = {
-                fg = "#ffe8a8"
+                fg = light
+            },
+            LineNrBelow = {
+                fg = dark
             }
         }
     end,
