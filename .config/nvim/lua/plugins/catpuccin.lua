@@ -36,17 +36,15 @@ return {
             },
             color_overrides = {},
             custom_highlights = function(colors)
-                local dark = "#656a6e"
-                local light = "#e6e8eb"
                 return {
                     LineNrAbove = {
-                        fg = dark
+                        fg = colors.overlay0
                     },
                     LineNr = {
-                        fg = light
+                        fg = colors.text
                     },
                     LineNrBelow = {
-                        fg = dark
+                        fg = colors.overlay0
                     }
                 }
             end,
