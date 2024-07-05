@@ -36,6 +36,7 @@ const option = (icon, label, callback) => Widget.Button({
             }),
             Widget.Label({
                 label,
+                css: 'font-size: 18px;',
             })
         ],
         margin: 8
@@ -64,5 +65,8 @@ export const monitor_settings = Widget.Window({
     }),
     visible: false,
     keymode: 'exclusive',
-    anchor: ['top', 'right'],
+    anchor: ['bottom', 'right'],
+    exclusivity: 'exclusive',
+    margins: [7],
+    css: 'border-radius: 7px;'
 })
