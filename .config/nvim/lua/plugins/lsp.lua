@@ -41,7 +41,7 @@ return {
                 'eslint',
                 'clangd',
                 'rust_analyzer',
-                'texlab',
+                -- 'texlab',
                 'gopls',
                 'pyright',
                 'bashls',
@@ -96,8 +96,8 @@ return {
                 fields = { 'abbr', 'kind' },
                 expandable_indicator = true,
                 format = lspkind.cmp_format({
-                    mode = 'symbol_text', -- show symbol and text annotations
-                    maxwidth = 70, -- prevent the popup from showing more than provided characters
+                    mode = 'symbol_text',  -- show symbol and text annotations
+                    maxwidth = 70,         -- prevent the popup from showing more than provided characters
                     ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                 })
             }
@@ -109,7 +109,7 @@ return {
         -- Go
         lspconfig.gopls.setup {
             cmd = { 'gopls' },
-            filetypes = { "go", "gomod", "gowork", "gotmpl" },
+            filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" },
             root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
             settings = {
                 gopls = {
@@ -120,5 +120,13 @@ return {
                 }
             }
         }
+
+        local servers = { 'tsserver' }
+        for _, lsp in ipairs(servers) do
+            lspconfig[lsp].setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+            })
+        end
     end
 }

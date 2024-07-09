@@ -34,7 +34,8 @@ return {
             },
             vim.filetype.add({
                 pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-            })
+            }),
+            vim.filetype.add({ extension = { templ = "templ" } })
         }
     end
 }
