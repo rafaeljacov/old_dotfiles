@@ -13,7 +13,6 @@ add_newline = false
 format = """
 $cmd_duration$directory $git_branch $fill\
 $python\
-$nodejs\
 $c\
 $rust\
 $java\
