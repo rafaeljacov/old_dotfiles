@@ -52,7 +52,7 @@ function Clock() {
 
 
 function Media() {
-    const label = Utils.watch("Nothing is playing", mpris, "player-changed", () => {
+    const label = Utils.watch("", mpris, "player-changed", () => {
         if (mpris.players[0]) {
             const { track_artists, track_title } = mpris.players[0]
             let media_title = `${track_artists.join(", ")} - ${track_title}`
@@ -62,7 +62,7 @@ function Media() {
             }
             return media_title
         } else {
-            return "Nothing is playing"
+            return ""
         }
     })
 
