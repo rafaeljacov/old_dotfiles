@@ -38,10 +38,13 @@ return {
                 'tsserver',
                 'emmet_ls',
                 'html',
+                'htmx',
                 'eslint',
                 'clangd',
                 'rust_analyzer',
                 -- 'texlab',
+                'templ',
+                'tailwindcss',
                 'gopls',
                 'pyright',
                 'bashls',
@@ -121,12 +124,16 @@ return {
             }
         }
 
-        local servers = { 'tsserver' }
-        for _, lsp in ipairs(servers) do
-            lspconfig[lsp].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-            })
-        end
+        lspconfig.tailwindcss.setup({
+            -- on_attach = on_attach,
+            -- capabilities = capabilities,
+            settings = {
+                tailwindCSS = {
+                    includeLanguages = {
+                        templ = "html",
+                    },
+                },
+            },
+        })
     end
 }
