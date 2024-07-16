@@ -6,7 +6,7 @@ set -g fish_greeting
 set -gx VISUAL nvim
 set -gx EDITOR nvim
 set -gx GOPATH $HOME/go
-set -gx PATH $PATH:$HOME/.cargo/bin:$GOPATH/bin
+set -gx PATH $PATH:$HOME/.cargo/bin:$GOPATH/bin:$HOME/.turso
 
 abbr vim nvim
 abbr gentoo-up sudo emerge --ask --update --changed-use --deep @world
