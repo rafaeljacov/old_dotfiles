@@ -1,9 +1,6 @@
 return {
     { "folke/neodev.nvim",    opts = {} },
 
-    -- Color Schemes
-    'tiagovla/tokyodark.nvim',
-
     'onsails/lspkind.nvim',
     'tpope/vim-fugitive',
 
