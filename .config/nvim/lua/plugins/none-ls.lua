@@ -14,6 +14,6 @@ return {
             }
         })
 
-        vim.keymap.set('n', '<leader><CR>', vim.lsp.buf.format, { desc = "Format" })
+        vim.keymap.set('n', '<leader><cr>', vim.lsp.buf.format, { desc = "Format" })
     end
 }
