@@ -41,7 +41,7 @@ return {
                 'htmx',
                 'eslint',
                 'clangd',
-                'rust_analyzer',
+                -- 'rust_analyzer',
                 -- 'texlab',
                 'templ',
                 'tailwindcss',
@@ -60,11 +60,18 @@ return {
             }
         })
 
+        require('luasnip.loaders.from_vscode').lazy_load()
+
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero').cmp_action()
         local lspkind = require('lspkind')
 
-        require('luasnip.loaders.from_vscode').lazy_load()
+        -- If you want insert `(` after select function or method item
+        local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+        cmp.event:on(
+            'confirm_done',
+            cmp_autopairs.on_confirm_done()
+        )
 
         cmp.setup({
             sources = {
@@ -99,18 +106,24 @@ return {
                 fields = { 'abbr', 'kind' },
                 expandable_indicator = true,
                 format = lspkind.cmp_format({
-                    mode = 'symbol_text',  -- show symbol and text annotations
-                    maxwidth = 70,         -- prevent the popup from showing more than provided characters
-                    ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-                })
+                    mode = 'symbol_text', -- show symbol and text annotations
+                    -- maxwidth = 70,         -- prevent the popup from showing more than provided characters
+                    ellipsis_char = '...',  -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                    before = function(_, vim_item)
+                        vim_item.menu = ""
+                        return vim_item
+                    end
+                }),
             }
         })
 
         local lspconfig = require('lspconfig')
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
         local util = require('lspconfig/util')
 
         -- Go
         lspconfig.gopls.setup {
+            capabilities = capabilities,
             cmd = { 'gopls' },
             filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" },
             root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
@@ -124,9 +137,10 @@ return {
             }
         }
 
+        -- Tailwind CSS
         lspconfig.tailwindcss.setup({
             -- on_attach = on_attach,
-            -- capabilities = capabilities,
+            capabilities = capabilities,
             settings = {
                 tailwindCSS = {
                     includeLanguages = {
@@ -134,6 +148,30 @@ return {
                     },
                 },
             },
+        })
+
+        -- Rust
+        lspconfig.rust_analyzer.setup({
+            -- on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                ["rust-analyzer"] = {
+                    imports = {
+                        granularity = {
+                            group = "module",
+                        },
+                        prefix = "self",
+                    },
+                    cargo = {
+                        buildScripts = {
+                            enable = true,
+                        },
+                    },
+                    procMacro = {
+                        enable = true
+                    },
+                }
+            }
         })
     end
 }
