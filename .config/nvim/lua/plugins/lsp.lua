@@ -121,6 +121,10 @@ return {
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
         local util = require('lspconfig/util')
 
+        local on_attach = function(client)
+            require 'completion'.on_attach(client)
+        end
+
         -- Go
         lspconfig.gopls.setup {
             capabilities = capabilities,
@@ -139,7 +143,7 @@ return {
 
         -- Tailwind CSS
         lspconfig.tailwindcss.setup({
-            -- on_attach = on_attach,
+            on_attach = on_attach,
             capabilities = capabilities,
             settings = {
                 tailwindCSS = {
@@ -151,9 +155,6 @@ return {
         })
 
         -- Rust
-        local on_attach = function(client)
-            require 'completion'.on_attach(client)
-        end
         lspconfig.rust_analyzer.setup({
             on_attach = on_attach,
             capabilities = capabilities,
