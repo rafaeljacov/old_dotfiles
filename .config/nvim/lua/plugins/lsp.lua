@@ -106,9 +106,9 @@ return {
                 fields = { 'abbr', 'kind' },
                 expandable_indicator = true,
                 format = lspkind.cmp_format({
-                    mode = 'symbol_text', -- show symbol and text annotations
+                    mode = 'symbol_text',  -- show symbol and text annotations
                     -- maxwidth = 70,         -- prevent the popup from showing more than provided characters
-                    ellipsis_char = '...',  -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                    ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                     before = function(_, vim_item)
                         vim_item.menu = ""
                         return vim_item
@@ -151,8 +151,11 @@ return {
         })
 
         -- Rust
+        local on_attach = function(client)
+            require 'completion'.on_attach(client)
+        end
         lspconfig.rust_analyzer.setup({
-            -- on_attach = on_attach,
+            on_attach = on_attach,
             capabilities = capabilities,
             settings = {
                 ["rust-analyzer"] = {
@@ -170,6 +173,9 @@ return {
                     procMacro = {
                         enable = true
                     },
+                    check = {
+                        command = "clippy"
+                    }
                 }
             }
         })
