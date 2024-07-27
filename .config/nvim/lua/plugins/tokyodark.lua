@@ -10,7 +10,20 @@ return {
             functions = {},              -- style for functions
             variables = {},              -- style for variables
         },
-        -- custom_highlights = {} or function(highlights, palette) return {} end, -- extend highlights
+        custom_highlights = {
+            LineNrAbove = {
+                fg = "grey"
+            },
+            LineNr = {
+                fg = "#d6d6d6"
+            },
+            LineNrBelow = {
+                fg = "grey"
+            },
+            NotifyBackground = {
+                bg = "black"
+            }
+        }, -- or function(highlights, palette) return {} end, -- extend highlights
         -- custom_palette = {} or function(palette) return {} end, -- extend palette
         terminal_colors = true, -- enable terminal colors
     },
