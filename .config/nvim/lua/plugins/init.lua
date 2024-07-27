@@ -3,6 +3,7 @@ return {
 
     'onsails/lspkind.nvim',
     'tpope/vim-fugitive',
+    'nanotee/zoxide.vim',
 
     -- Debugger
     { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
