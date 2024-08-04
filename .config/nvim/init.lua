@@ -13,27 +13,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Neovide
-if vim.g.neovide then
-    vim.g.neovide_scale_factor = 1.0
-    local change_scale_factor = function(delta)
-        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
-    end
-    vim.keymap.set("n", "<C-=>", function()
-        change_scale_factor(1.25)
-    end)
-    vim.keymap.set("n", "<C-->", function()
-        change_scale_factor(1 / 1.25)
-    end)
-
-    vim.g.neovide_padding_top = 20
-    vim.g.neovide_padding_right = 10
-    vim.g.neovide_padding_left = 20
-end
-
 vim.g.mapleader = " "
 
-require('lazy').setup('plugins')
+require('lazy').setup({
+    { import = 'plugins' },
+    { import = 'plugins.lsp' }
+})
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -57,3 +42,21 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
         }
     end
 })
+
+-- Neovide
+if vim.g.neovide then
+    vim.g.neovide_scale_factor = 1.0
+    local change_scale_factor = function(delta)
+        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+    end
+    vim.keymap.set("n", "<C-=>", function()
+        change_scale_factor(1.25)
+    end)
+    vim.keymap.set("n", "<C-->", function()
+        change_scale_factor(1 / 1.25)
+    end)
+
+    vim.g.neovide_padding_top = 20
+    vim.g.neovide_padding_right = 10
+    vim.g.neovide_padding_left = 20
+end
