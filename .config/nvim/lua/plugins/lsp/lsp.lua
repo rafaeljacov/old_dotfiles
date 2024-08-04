@@ -151,9 +151,9 @@ return {
 
         -- Rust
         lspconfig.rust_analyzer.setup({
-            on_attach = function(_, bufnr)
-                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-            end,
+            -- on_attach = function(_, bufnr)
+            --     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            -- end,
             capabilities = capabilities,
             settings = {
                 ["rust-analyzer"] = {
