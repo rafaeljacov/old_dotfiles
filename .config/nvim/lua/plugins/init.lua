@@ -12,6 +12,5 @@ return {
 
     { 'lewis6991/gitsigns.nvim', opts = {} },
     {'numToStr/Comment.nvim', opts = {}},
-    {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}},
     'windwp/nvim-ts-autotag',
 }
