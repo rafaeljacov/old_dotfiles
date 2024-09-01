@@ -11,19 +11,15 @@ button:active {
     background-color: @theme_selected_bg_color;
 }
 
-/* button:not(.focused):hover { */
-/*     border-bottom: 3px solid @theme_fg_color; */
-/* } */
-
 label {
     font-weight: bold;
 }
 
 .workspaces button {
     padding: 0;
-    background-color: white;
-    min-height: 12px;
-    min-width: 12px;
+    background-color: @theme_text_color;
+    min-height: 5px;
+    min-width: 5px;
     border-radius: 50%;
     margin-right: 8px;
     transition: all 0.25s ease;
@@ -31,8 +27,9 @@ label {
 
 .workspaces button.focused {
     background-color: @theme_selected_bg_color;
-    border-radius: 10px;
-    min-width: 21px;
+    border-radius: 7px;
+    min-width: 19px;
+    min-height: 10px;
 }
 
 .notification {
