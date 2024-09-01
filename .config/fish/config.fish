@@ -9,7 +9,7 @@ set -gx GOPATH $HOME/go
 set -gx PATH $PATH:$HOME/.cargo/bin:$GOPATH/bin:$HOME/.turso
 
 abbr vim nvim
-abbr gentoo-up sudo emerge --ask --update --changed-use --deep @world
+abbr update sudo emerge --ask --update --changed-use --deep @world
 
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
