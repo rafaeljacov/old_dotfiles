@@ -22,7 +22,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     # Random Pokemon Sprite
-    krabby random --no-title
+    set pokemons "krabby" "froakie" "frogadier" "greninja" "pikachu" "ivysaur" "krabby" "squirtle"
+    krabby name --no-title (random choice $pokemons)
 end
 
 function fish_user_key_bindings
