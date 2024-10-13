@@ -22,7 +22,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     # Random Pokemon Sprite
-    set pokemons "krabby" "froakie" "frogadier" "greninja" "pikachu" "ivysaur" "krabby" "squirtle"
+    set pokemons "charmander" "krabby" "froakie" "frogadier" "greninja" "pikachu" "ivysaur" "krabby" "squirtle"
     krabby name --no-title (random choice $pokemons)
 end
 
