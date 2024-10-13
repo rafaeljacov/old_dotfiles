@@ -35,7 +35,7 @@ return {
         require('mason-lspconfig').setup({
             ensure_installed = {
                 'cssls',
-                'tsserver',
+                'ts_ls',
                 'emmet_ls',
                 'html',
                 'htmx',
