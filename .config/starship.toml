@@ -7,12 +7,8 @@ add_newline = false
 # Wedges 🭧🭒 🭣🭧🭓
 # Random noise 🬖🬥🬔🬗
 
-# format = """
-# $cmd_duration$username$hostname $directory $git_branch
-# $character
-# """
 format = """
-$cmd_duration$directory $git_branch $fill\
+$directory $git_branch\
 $python\
 $c\
 $rust\
@@ -26,20 +22,16 @@ $character
 symbol = ' '
 
 # Replace the "❯" symbol in the prompt with "➜"
-[character]                            # The name of the module we are configuring is "character"
-success_symbol = "[• ](bold fg:green) "
-error_symbol = "[• 󰅙](bold fg:red) "
-
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+[character]
+success_symbol = "[❯](bold fg:green) "
+error_symbol = "[❯](bold fg:red) "
 
 [git_branch]
 style = "bg: green"
 symbol = "󰘬"
 truncation_length = 4
 truncation_symbol = ""
-format = "• [](bold fg:green)[$symbol $branch(:$remote_branch)](fg:crust bg:green)[ ](bold fg:green)"
+format = "on [$symbol $branch(:$remote_branch) ](fg:teal)"
 
 [git_commit]
 commit_hash_length = 4
@@ -61,68 +53,37 @@ staged = '[++\($count\)](green)'
 renamed = " ✍️ "
 deleted = " 🗑 "
 
-[hostname]
-ssh_only = false
-format =  "[•$hostname](bg:teal bold fg:crust)[](bold fg:teal )"
-trim_at = ".companyname.com"
-disabled = false
-
 [line_break]
 disabled = false
 
-[memory_usage]
-disabled = true
-threshold = -1
-symbol = " "
-style = "bold dimmed green"
-
-[time]
-disabled = true
-format = '🕙[\[ $time \]]($style) '
-time_format = "%T"
-
-[username]
-style_user = "bold bg:teal fg:crust"
-style_root = "red bold"
-format = "[](bold fg:teal)[$user]($style)"
-disabled = false
-show_always = true
-
 [directory]
-home_symbol = "  "
 read_only = "  "
-style = "bg:green fg:crust"
-truncation_length = 6
-truncation_symbol = "••/"
-format = '[](bold fg:green)[$path ]($style)[](bold fg:green)'
-
-
-[directory.substitutions]
-"Desktop" = "  "
-"Documents" = "  "
-"Downloads" = "  "
-"Music" = "  "
-"Pictures" = "  "
-"Videos" = "  "
-
-[cmd_duration]
-min_time = 0
-format = '[](bold fg:yellow)[ $duration](bold bg:yellow fg:crust)[](bold fg:yellow) •• '
+style = "fg:sapphire"
+truncation_length = 2
+format = '[$path]($style)'
 
 [python]
 symbol = " "
+format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+version_format = 'v${major}.${minor}'
 
 [golang]
 symbol = " "
-format = "[$symbol($version )]($style)"
 style = "bold sapphire"
+version_format = 'v${major}.${minor}'
+format = '\[[$symbol($version)]($style)\]'
 detect_extensions = ['go', 'templ']
 
 [lua]
 symbol = " "
+format = '\[[$symbol($version)]($style)\]'
+version_format = 'v${major}.${minor}'
 
 [rust]
-symbol = " "
+symbol = "󱘗 "
+version_format = 'v${major}.${minor}'
+style = "fg:peach"
+format = '\[[$symbol($version)]($style)\]'
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
