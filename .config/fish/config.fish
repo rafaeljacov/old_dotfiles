@@ -10,6 +10,7 @@ set -gx GOPATH $HOME/go
 
 abbr vim nvim
 abbr update sudo emerge --ask --update --changed-use --deep @world
+abbr ino arduino-cli
 
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
@@ -45,4 +46,5 @@ nvm -s use latest
 
 zoxide init --cmd cd fish | source
 starship init fish | source
+krabby init fish | source
 enable_transience
