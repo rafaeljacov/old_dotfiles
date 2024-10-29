@@ -49,3 +49,7 @@ zoxide init --cmd cd fish | source
 starship init fish | source
 krabby init fish | source
 enable_transience
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
