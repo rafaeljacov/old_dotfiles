@@ -26,3 +26,6 @@ vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 70
 vim.opt.conceallevel = 2
+
+-- This will avoid an annoying layout shift in the screen
+vim.opt.signcolumn = 'yes'

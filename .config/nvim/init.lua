@@ -17,7 +17,7 @@ vim.g.mapleader = " "
 
 require('lazy').setup({
     { import = 'plugins' },
-    { import = 'plugins.lsp' }
+    { import = 'plugins.lsp.00-init' }
 })
 
 vim.g.loaded_netrw = 1

@@ -1,15 +1,17 @@
-vim.keymap.set('i', "<C-v>", '<Esc>"+p==')
+local keymap = vim.keymap.set
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap('i', "<C-v>", '<Esc>"+p==')
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<leader>n", ":normal ")
+keymap("n", "J", "mzJ`z")
+keymap("n", "<C-d>", "<C-d>zz")
+keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "n", "nzzzv")
+keymap("n", "N", "Nzzzv")
 
-vim.keymap.set('x', '<leader>p', "\"_dP", { desc = "Paste and retain register" })
+keymap("n", "Q", "<nop>")
+keymap("n", "<leader>n", ":normal ")
+
+keymap('x', '<leader>p', "\"_dP", { desc = "Paste and retain register" })
