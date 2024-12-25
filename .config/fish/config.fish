@@ -1,12 +1,8 @@
-# if status is-interactive
-# and not set -q TMUX
-# end
-
 set -g fish_greeting
 set -gx VISUAL nvim
 set -gx EDITOR nvim
 set -gx GOPATH $HOME/go
-# set -gx PATH $PATH:$HOME/.cargo/bin:$GOPATH/bin:$HOME/.turso
+set -gx PATH $PATH:$GOPATH/bin
 
 abbr vim nvim
 abbr update sudo emerge --ask --update --changed-use --deep @world
