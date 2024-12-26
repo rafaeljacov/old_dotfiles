@@ -27,15 +27,15 @@ return {
                     'ts_ls',
                     'emmet_ls',
                     'html',
-                    'htmx',
+                    -- 'htmx', not compatible
                     'eslint',
-                    'clangd',
+                    -- 'clangd', use termux pkg instead
                     'templ',
                     'tailwindcss',
                     'gopls',
                     'pyright',
                     'bashls',
-                    'lua_ls',
+                    -- 'lua_ls', use termux pkg instead
                     'marksman'
                 },
                 handlers = {
