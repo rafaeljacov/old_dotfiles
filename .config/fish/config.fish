@@ -5,8 +5,6 @@ set -gx GOPATH $HOME/go
 set -gx PATH $PATH:$GOPATH/bin
 
 abbr vim nvim
-abbr update sudo emerge --ask --update --changed-use --deep @world
-abbr ino arduino-cli
 
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
@@ -16,10 +14,6 @@ alias lt='eza -T --icons=auto' # list tree
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-
-    # Random Pokemon Sprite
-    set -l pokemons "charmander" "krabby" "froakie" "frogadier" "greninja" "pikachu" "bulbasaur" "ivysaur" "krabby" "squirtle"
-    krabby name --no-title (random choice $pokemons)
 end
 
 function fish_user_key_bindings
@@ -38,14 +32,6 @@ function starship_transient_prompt_func
     starship module character
 end
 
-# Enable node & npm while ignoring the stdout
-nvm -s use latest
-
 zoxide init --cmd cd fish | source
 starship init fish | source
-krabby init fish | source
 enable_transience
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
