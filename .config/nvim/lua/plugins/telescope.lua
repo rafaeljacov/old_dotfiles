@@ -8,8 +8,9 @@ return {
             build = 'make',
         },
     },
-    keys = {
-    },
+    init = function ()
+        require('telescope').setup{}
+    end,
     config = function ()
         require('telescope').load_extension('fzf')
         local builtin = require('telescope.builtin')
