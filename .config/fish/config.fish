@@ -43,7 +43,7 @@ nvm -s use latest
 
 zoxide init --cmd cd fish | source
 starship init fish | source
-krabby init fish | source
+krabby completions fish | source
 enable_transience
 
 # bun

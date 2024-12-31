@@ -1,5 +1,3 @@
-local config_dir = vim.fn.stdpath('config')
-
 return {
     "folke/snacks.nvim",
     priority = 1000,

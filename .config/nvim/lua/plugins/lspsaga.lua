@@ -23,7 +23,7 @@ return {
 
         { '<leader>?',  '<Cmd>Lspsaga code_action<cr>',                desc = 'Code Actions' },
 
-        { '<leader>gr', '<Cmd>Lspsaga finder<cr>',                     desc = 'Find References' },
+        { 'gr', '<Cmd>Lspsaga finder<cr>',                     desc = 'Find References' },
 
         { '<leader>r',  '<Cmd>Lspsaga rename<cr>',                     desc = 'Rename Symbol' },
     }
