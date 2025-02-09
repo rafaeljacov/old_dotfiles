@@ -23,6 +23,7 @@ return {
         config = function()
             local cmp = require('cmp')
             local lspkind = require('lspkind')
+            local luasnip = require('luasnip')
             require('luasnip.loaders.from_vscode').lazy_load()
 
             -- if you want insert `(` after select function or method item
@@ -55,14 +56,46 @@ return {
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    -- confirm completion
-                    ['<c-y>'] = cmp.mapping.confirm({ select = true }),
-
                     -- scroll up and down the documentation window
                     ['<c-u>'] = cmp.mapping.scroll_docs(-4),
                     ['<c-d>'] = cmp.mapping.scroll_docs(4),
 
                     ['<c-space>'] = cmp.mapping.complete(),
+
+                    -- confirm completion
+                    ['<c-y>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            if luasnip.expandable() then
+                                luasnip.expand()
+                            else
+                                cmp.confirm({
+                                    select = true,
+                                })
+                            end
+                        else
+                            fallback()
+                        end
+                    end),
+
+                    ["<c-f>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.locally_jumpable(1) then
+                            luasnip.jump(1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+
+                    ["<c-b>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.locally_jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
                 }),
                 formatting = {
                     fields = { 'abbr', 'kind' },
