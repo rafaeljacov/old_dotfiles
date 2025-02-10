@@ -9,7 +9,9 @@ return {
 
             -- Language Servers: (for Rust, see "plugins.rustaceanvim")
             local gopls = require("plugins.lsp.gopls")
-            local tailwindcss = require("plugins.lsp.tailwindcss")
+            local htmx = require("plugins.lsp.htmx")
+            local html = require("plugins.lsp.html")
+            local emmet = require("plugins.lsp.emmet")
 
             -- add cmp_nvim_lsp capabilities settings to lspconfig
             -- this should be executed before you configure any language server
@@ -36,17 +38,24 @@ return {
                     'pyright',
                     'bashls',
                     'lua_ls',
+                    'tinymist',
                     'marksman'
                 },
                 handlers = {
                     function(server_name)
                         lspconfig[server_name].setup({})
                     end,
+                    html = function()
+                        lspconfig.html.setup(html)
+                    end,
+                    emmet_ls = function()
+                        lspconfig.emmet_ls.setup(emmet)
+                    end,
                     gopls = function()
                         lspconfig.gopls.setup(gopls)
                     end,
-                    tailwindcss = function()
-                        lspconfig.tailwindcss.setup(tailwindcss)
+                    htmx = function()
+                        lspconfig.htmx.setup(htmx)
                     end,
                 },
             })
