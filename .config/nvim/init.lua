@@ -60,3 +60,6 @@ if vim.g.neovide then
     vim.g.neovide_padding_right = 10
     vim.g.neovide_padding_left = 20
 end
+
+-- Colorscheme
+vim.cmd.colorscheme "oh-lucy"
