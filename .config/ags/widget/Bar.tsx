@@ -6,6 +6,7 @@ import Battery from "gi://AstalBattery"
 import Wp from "gi://AstalWp"
 import Network from "gi://AstalNetwork"
 import Tray from "gi://AstalTray"
+import { truncate } from "../lib/utils"
 
 function SysTray() {
     const tray = Tray.get_default()
@@ -30,28 +31,32 @@ function SysTray() {
     </box>
 }
 
-function Wifi() {
+function QuickControlBtn() {
     const { wifi } = Network.get_default()
+    const speaker = Wp.get_default()?.audio.default_speaker!
+    const mic = Wp.get_default()?.audio.default_microphone!
 
-    return <icon
-        css="margin-left: 14px"
-        tooltipText={bind(wifi, "ssid").as(String)}
-        className="Wifi"
-        icon={bind(wifi, "iconName")}
-    />
-}
-
-function AudioSlider() {
-    const speaker = Wp.get_default()?.audio.defaultSpeaker!
-
-    return <box className="AudioSlider" css="min-width: 140px">
-        <icon icon={bind(speaker, "volumeIcon")} />
-        <slider
-            hexpand
-            onDragged={({ value }) => speaker.volume = value}
-            value={bind(speaker, "volume")}
-        />
-    </box>
+    return <button
+        className='QuickControlBtn'
+        onClicked={() => App.toggle_window('quick_control')}
+        cursor='pointer'
+    >
+        <box>
+            <icon
+                tooltip_text={bind(wifi, "ssid")}
+                className="Wifi"
+                icon={bind(wifi, "iconName")}
+            />
+            <icon
+                icon={bind(mic, "mute").as(muted => muted ? 'mic-muted' : 'mic')}
+                setup={self => {
+                    self.hook(bind(mic, 'mute'), 
+                        (self, mute) => self.set_visible(mute))
+                }}
+            />
+            <icon icon={bind(speaker, "volumeIcon")} />
+        </box>
+    </button> 
 }
 
 function BatteryLevel() {
@@ -81,6 +86,9 @@ function Media() {
                 />
                 <label
                     label={bind(ps[0], "title").as(() =>
+                        truncate(`${ps[0].title} - ${ps[0].artist}`, 30)
+                    )}
+                    tooltip_text={bind(ps[0], "title").as(() =>
                         `${ps[0].title} - ${ps[0].artist}`
                     )}
                 />
@@ -130,6 +138,12 @@ export default function Bar(monitor: Gdk.Monitor) {
         anchor={TOP | LEFT | RIGHT}>
         <centerbox>
             <box hexpand halign={Gtk.Align.START}>
+                <icon 
+                    margin_start={10} 
+                    margin_end={7} 
+                    css='font-size: 21px; margin-left: 4px;'
+                    icon='gentoo'
+                />
                 <Workspaces />
             </box>
             <box>
@@ -137,8 +151,7 @@ export default function Bar(monitor: Gdk.Monitor) {
             </box>
             <box hexpand halign={Gtk.Align.END} >
                 <SysTray />
-                <Wifi />
-                <AudioSlider />
+                <QuickControlBtn />
                 <BatteryLevel />
                 <Time />
             </box>

@@ -1,0 +1,145 @@
+$fg-color: #{"@theme_fg_color"};
+$bg-color: #{"@theme_bg_color"};
+$accent: #378DF7;
+
+window {
+  background-color: transparent;
+
+  .QuickControl {
+    background-color: rgb(50, 50, 50);
+    padding: 0.75em;
+    border-radius: 10px;
+  }
+}
+
+.Session {
+  min-height: 3em;
+  padding: 0.5em 0.2em;
+
+  .profile-img {
+    min-height: 4em;
+    min-width: 4em;
+    background-image: url("assets/images/profile.jpg");
+    background-size: contain;
+    margin-right: 0.4em;
+    border: 2px solid black;
+    border-radius: 0.5em;
+  }
+
+  .Info {
+    icon {
+      margin-right: 0.3em;
+    }
+  }
+
+  .PowerControlBtn {
+    min-height: 3em;
+    min-width: 3em;
+    margin-left: 0.5em;
+
+    icon {
+      font-size: 1.3em;
+    }
+
+    button {
+      border-radius: 0.7em;
+      border: 3px solid rgb(20, 20, 20);
+    }
+  }
+}
+
+.Sliders {
+  background-color: $bg-color;
+  margin: 0.2em;
+  margin-bottom: 0.47em;
+  padding: 0.5em;
+  border-radius: 0.4em;
+
+  .SliderEntry {
+    min-width: 15rem;
+
+    button {
+      all: unset;
+    }
+
+    icon {
+      margin-left: 0.7em;
+      font-size: 1.15em;
+    }
+
+    trough {
+      min-height: 1.2em;
+      outline: none;
+      border-radius: 1em;
+    }
+
+    highlight {
+      border-radius: 1em;
+    }
+
+    slider {
+      all: unset;
+    }
+  }
+
+  .Aside {
+    padding: 0 0.3em;
+    min-width: 2em;
+
+    button {
+      all: unset;
+      border-radius: 0.3em;
+      margin: 0.87em 0;
+
+      &.sound-setting icon {
+        font-size: 1.25em;
+      }
+
+      &.warm-light-toggle icon {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+
+.MainControls .ControlBtn {
+  $br: 1.2em;
+
+  min-width: 14em;
+  min-height: 3.7em;
+  margin: 3px;
+
+  icon {
+    font-size: 1.4em;
+  }
+
+  label {
+    margin-left: 0.5em;
+  }
+
+  button {
+    border-radius: $br;
+
+    &.active {
+      background-color: $accent;
+    }
+
+    &.has-expand {
+      border-radius: $br 0 0 $br;
+    }
+
+    &.expand {
+      padding: 0 0 0 8px;
+      border-left: 2px solid $bg-color;
+      border-radius: 0 $br $br 0;
+
+      icon {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  &.mic label {
+    font-size: 1.15em;
+  }
+}

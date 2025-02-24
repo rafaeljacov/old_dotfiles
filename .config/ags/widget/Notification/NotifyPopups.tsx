@@ -90,14 +90,14 @@ class NotifiationMap implements Subscribable {
 }
 
 export default function NotifyPopups(gdkmonitor: Gdk.Monitor) {
-    const { TOP, RIGHT } = Astal.WindowAnchor
+    const { BOTTOM, RIGHT } = Astal.WindowAnchor
     const notifs = new NotifiationMap()
 
     return <window
         className="NotificationPopups"
         gdkmonitor={gdkmonitor}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
-        anchor={TOP | RIGHT}>
+        anchor={BOTTOM | RIGHT}>
         <box vertical>
             {bind(notifs)}
         </box>

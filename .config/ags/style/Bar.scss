@@ -1,6 +1,6 @@
 @use "sass:color";
 
-$bg: #212223;
+$bg_color: #{ "@theme_bg_color" };
 $fg: #f1f1f1;
 $accent: #378DF7;
 $radius: 7px;
@@ -8,7 +8,7 @@ $radius: 7px;
 window.Bar {
     border: none;
     box-shadow: none;
-    background-color: $bg;
+    background-color: $bg_color;
     color: $fg;
     font-size: 1.1em;
     font-weight: bold;
@@ -22,10 +22,28 @@ window.Bar {
             border-color: color.adjust($accent, $alpha: -0.8);
         }
 
+        &.QuickControlBtn {
+            padding: 3px 3px 3px 1px;
+            border-radius: 2em;
+            transition: background-color 0.3s ease;
+            border: 3px solid transparent;
+            margin: 0 0.4em;
+
+            &:hover {
+                border-color: black;
+                background-color: $accent;
+            }
+
+            icon {
+                margin-left: 6px;
+            }
+        }
+
         &:active label {
             background-color: color.adjust($fg, $alpha: -0.8)
         }
     }
+
 
     label {
         transition: 200ms;
@@ -55,38 +73,5 @@ window.Bar {
     .Battery label {
         padding-left: 0;
         margin-left: 0;
-    }
-
-    .AudioSlider {
-        * {
-            all: unset;
-        }
-
-        icon {
-            margin-right: .6em;
-        }
-
-        & {
-            margin: 0 1em;
-        }
-
-        trough {
-            background-color: color.adjust($fg, $alpha: -0.8);
-            border-radius: $radius;
-        }
-
-        highlight {
-            background-color: $accent;
-            min-height: .8em;
-            border-radius: $radius;
-        }
-
-        slider {
-            background-color: $fg;
-            border-radius: $radius;
-            min-height: 1em;
-            min-width: 1em;
-            margin: -.2em;
-        }
     }
 }

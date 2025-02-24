@@ -38,7 +38,10 @@ export default function Applauncher() {
     const apps = new Apps.Apps()
 
     const text = Variable("")
-    const list = text(text => apps.fuzzy_query(text).slice(0, MAX_ITEMS))
+    const list = text(text => apps.fuzzy_query(text)
+        .slice(0, MAX_ITEMS)
+        .filter(app => app.name != 'Spotify')) // Skip Spotify in favor of Spotify (adblock)
+
     const onEnter = () => {
         apps.fuzzy_query(text.get())?.[0].launch()
         hide()

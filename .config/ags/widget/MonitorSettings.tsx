@@ -1,15 +1,13 @@
 import Hyprland from "gi://AstalHyprland"
 import { App, Astal, Gdk } from "astal/gtk3"
 
-App.add_icons('/home/rafaeljacov/.config/ags/assets')
-
 const Monitor = {
     MAIN: 'eDP-1',
     HDMI: 'HDMI-A-1'
 }
 
 function keyword_monitor(monitor: string, value: string) {
-    Hyprland.get_default().message_async(`keyword monitor ${monitor}, ${value}`)
+    Hyprland.get_default().message(`keyword monitor ${monitor}, ${value}`)
 }
 
 const actions = [
@@ -33,7 +31,7 @@ const actions = [
 function Option(icon: string, label: string, callback: any) {
     return <button onClicked={callback} margin={2}>
         <box margin={8}>
-            <icon icon={icon} icon_size={48} margin_end={24} />
+            <icon icon={icon} css='font-size: 35px;' margin_end={20} />
             <label label={label} css='font-size: 18px;' />
         </box>
     </button>
