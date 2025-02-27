@@ -16,4 +16,7 @@ return {
             }
         }
     }, -- your configuration
+    keys = {
+        { "<leader>T", "<cmd>TailwindConcealToggle<cr>", { desc = "Toggle Classes" } }
+    }
 }
