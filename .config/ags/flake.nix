@@ -1,49 +1,48 @@
 {
-  description = "My Awesome Desktop Shell";
-
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ags = {
       url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ags,
-  }: let
+  outputs = { self, nixpkgs, astal, ags }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    packages.${system} = {
-      default = ags.lib.bundle {
-        inherit pkgs;
-        src = ./.;
-        name = "my-shell";
-        entry = "app.ts";
+    packages.${system}. default = pkgs.stdenvNoCC.mkDerivation rec {
+      name = "my-shell";
+      src = ./.;
 
-        # additional libraries and executables to add to gjs' runtime
-        extraPackages = [
-          # ags.packages.${system}.battery
-          # pkgs.fzf
-        ];
-      };
-    };
+      nativeBuildInputs = [
+        ags.packages.${system}.default
+        pkgs.wrapGAppsHook
+        pkgs.gobject-introspection
+      ];
 
-    devShells.${system} = {
-      default = pkgs.mkShell {
-        buildInputs = [
-          # includes astal3 astal4 astal-io by default
-          (ags.packages.${system}.default.override {
-            extraPackages = [
-              # cherry pick packages
-            ];
-          })
-        ];
-      };
+      buildInputs = with astal.packages.${system}; [
+        astal3
+        io
+        hyprland
+        battery
+        mpris
+        apps
+        wireplumber
+        tray
+        notifd
+        network
+        bluetooth
+      ];
+
+      installPhase = ''
+        mkdir -p $out/bin
+        ags bundle app.ts $out/bin/${name}
+      '';
     };
   };
 }
