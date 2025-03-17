@@ -1,2 +1,5 @@
 @girs/
 node_modules/
+
+# Nix build artifacts
+result

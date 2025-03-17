@@ -1,32 +1,22 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    ags.url = "github:aylur/ags";
   };
 
-  outputs = { self, nixpkgs, astal, ags }: let
+  outputs = { self, nixpkgs, ags }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    packages.${system}. default = pkgs.stdenvNoCC.mkDerivation rec {
-      name = "my-shell";
+    packages.${system}.default = ags.lib.bundle { 
+      inherit pkgs;
       src = ./.;
+      name = "ags-shell"; # name of executable
+      entry = "app.ts";
+      gtk4 = false;
 
-      nativeBuildInputs = [
-        ags.packages.${system}.default
-        pkgs.wrapGAppsHook
-        pkgs.gobject-introspection
-      ];
-
-      buildInputs = with astal.packages.${system}; [
-        astal3
+      # additional libraries and executables to add to gjs' runtime
+      extraPackages = with ags.packages.${system}; [
         io
         hyprland
         battery
@@ -38,11 +28,6 @@
         network
         bluetooth
       ];
-
-      installPhase = ''
-        mkdir -p $out/bin
-        ags bundle app.ts $out/bin/${name}
-      '';
     };
   };
 }
