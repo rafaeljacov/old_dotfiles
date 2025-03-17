@@ -35,11 +35,11 @@ function starship_transient_prompt_func
 end
 
 # Enable node & npm while ignoring the stdout
-nvm -s use latest
+# nvm -s use latest
 
 zoxide init --cmd cd fish | source
 starship init fish | source
-krabby completions fish | source
+# krabby completions fish | source
 enable_transience
 
 # bun
