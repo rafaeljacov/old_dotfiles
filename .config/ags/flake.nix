@@ -12,23 +12,6 @@
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    astallibs = with ags.packages.${system}; [
-      io
-      hyprland
-      battery
-      mpris
-      apps
-      wireplumber
-      tray
-      notifd
-      network
-      bluetooth
-    ];
-    ags_package = (
-      ags.packages.${system}.ags.override {
-        extraPackages = astallibs;
-      }
-    );
   in {
     packages.${system}.default = ags.lib.bundle {
       inherit pkgs;
@@ -38,9 +21,18 @@
       gtk4 = false;
 
       # additional libraries and executables to add to gjs' runtime
-      extraPackages = astallibs;
+      extraPackages = with ags.packages.${system}; [
+        io
+        hyprland
+        battery
+        mpris
+        apps
+        wireplumber
+        tray
+        notifd
+        network
+        bluetooth
+      ];
     };
-
-    ags_bin = ags_package;
   };
 }
