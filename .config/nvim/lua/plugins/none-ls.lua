@@ -17,6 +17,7 @@ return {
                 null_ls.builtins.formatting.clang_format,
                 null_ls.builtins.formatting.prettier,
                 null_ls.builtins.formatting.sqlfluff,
+                null_ls.builtins.formatting.alejandra,
                 null_ls.builtins.diagnostics.sqlfluff.with({
                     extra_args = { "--dialect", "postgres" }, -- change to your dialect
                 }),
