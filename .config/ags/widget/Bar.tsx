@@ -142,7 +142,7 @@ export default function Bar(monitor: Gdk.Monitor) {
                     margin_start={10} 
                     margin_end={7} 
                     css='font-size: 21px; margin-left: 4px;'
-                    icon='gentoo'
+                    icon='nix'
                 />
                 <Workspaces />
             </box>
