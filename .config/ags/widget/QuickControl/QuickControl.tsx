@@ -145,7 +145,7 @@ function Session() {
                 <PowerControlBtn
                     icon="system-shutdown-symbolic"
                     callback={() => {
-                        exec(['loginctl', 'poweroff'])
+                        exec("poweroff")
                     }}
                 />
             </box>
