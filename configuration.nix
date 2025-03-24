@@ -4,26 +4,42 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
-  imports = [
+  imports = let
+    aagl-gtk-on-nix = import (builtins.fetchTarball {
+      url = "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz";
+      sha256 = "0z9lg60k9f58asx6myz25ysp3finfa8yrzz6ars2lasi5zhvg4s9";
+    });
+  in [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    # Anime game launcher
+    aagl-gtk-on-nix.module
   ];
+  programs.anime-game-launcher.enable = true;
+
+  # as needed by devenv
+  nix.settings.trusted-users = ["root" "rafaeljacov"];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
+  # environment.variables = {
+  #   EDITOR = "nvim";
+  #   VISUAL = "nvim";
+  # };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -56,10 +72,21 @@
     variant = "";
   };
 
+  # Fish
   programs.fish.enable = true;
 
   # Hyprland
   programs.hyprland.enable = true;
+
+  # Steam
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+  programs.gamemode.enable = true;
 
   # Optional, hint Electron apps to use Wayland:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -68,39 +95,43 @@
   users.users.rafaeljacov = {
     isNormalUser = true;
     description = "Rafael Jacov Medel";
-    extraGroups = ["networkmanager" "audio" "wheel" "docker"];
+    extraGroups = ["networkmanager" "storage" "audio" "wheel" "docker"];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    git
-    kitty
-    xfce.thunar
-    file-roller
-    docker
-    microsoft-edge
-    lxqt.lxqt-policykit
-    pavucontrol
-    gparted
+    alsa-utils
     brightnessctl
-    ags
-    tmux
-    wl-clipboard
-    blueman
-    go
+    docker
+    evince
+    ffmpegthumbnailer
+    file-roller
     gcc
-    zip
-    unzip
-    zulu17
-    xdg-user-dirs
+    git
     gnumake
+    go
+    gparted
+    kitty
+    lsof
+    lxqt.lxqt-policykit
+    microsoft-edge
+    pavucontrol
     python3
+    tmux
+    unzip
+    usbutils
+    vim
     wget
+    wl-clipboard
+    xdg-user-dirs
+    xfce.thunar
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
+    xfce.thunar-volman
+    xfce.tumbler
+    zip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -112,6 +143,21 @@
   # };
 
   # List services that you want to enable:
+  services.upower.enable = true;
+  services.gvfs.enable = true;
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # adb
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
 
   # Docker
   virtualisation.docker.enable = true;
@@ -124,11 +170,33 @@
 
   # Bluetooth
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
   services.blueman.enable = true;
 
   # Authentication
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
+
+  # Greeter
+  services.xserver.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.lightdm.greeters.slick.enable = true;
+
+  # Fonts
+  fonts.enableDefaultPackages = true;
+  fonts.packages = with pkgs; [
+    nerd-fonts.sauce-code-pro
+    nerd-fonts.jetbrains-mono
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+  ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
