@@ -17,7 +17,7 @@
   }: let
     system = "x86_64-linux";
   in {
-    nixosConfigurations.huawei-nix = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.huawei-nixos = nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {inherit inputs;};
 
