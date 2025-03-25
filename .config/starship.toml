@@ -9,12 +9,13 @@ add_newline = false
 
 format = """
 $directory $nix_shell$git_branch$git_commit$git_status$git_state\
+$fill \
 $python\
 $c\
 $rust\
 $java\
 $golang\
-$lua
+$lua 
 $character
 """
 
@@ -55,6 +56,7 @@ behind = '[](red)'
 stashed = "[ ](subtext0)"
 modified = '[ ](red)'
 staged = '[ ](green)'
+diverged = '[󰹺](yellow)'
 
 [line_break]
 disabled = false
