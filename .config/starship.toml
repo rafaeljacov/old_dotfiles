@@ -34,7 +34,7 @@ impure_msg = '[ ](subtext0)'
 [git_branch]
 format = "on [$symbol $branch(:$remote_branch)](fg:teal) "
 style = "bg: green"
-symbol = "󰘬"
+symbol = "[󰘬](text)"
 truncation_length = 6
 truncation_symbol = ".."
 
