@@ -6,6 +6,7 @@ return {
         'williamboman/mason-lspconfig.nvim',
         config = function()
             local lspconfig = require('lspconfig')
+            lspconfig['lua_ls'].setup({}) -- use system installed package for NixOS compat
 
             -- Language Servers: (for Rust, see "plugins.rustaceanvim")
             local gopls = require("plugins.lsp.gopls")
@@ -37,13 +38,14 @@ return {
                     'gopls',
                     'pyright',
                     'bashls',
-                    'lua_ls',
                     'tinymist',
                     'marksman'
                 },
                 handlers = {
                     function(server_name)
                         lspconfig[server_name].setup({})
+                    end,
+                    lua_ls = function()
                     end,
                     html = function()
                         lspconfig.html.setup(html)

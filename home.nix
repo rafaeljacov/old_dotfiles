@@ -126,6 +126,7 @@
     grim
     inputs.zen-browser.packages.${system}.beta
     krabby
+    lua-language-server
     mypy
     neovim
     nodePackages.prettier
