@@ -29,6 +29,7 @@
   in {
     EDITOR = editor;
     VISUAL = editor;
+    SHELL = "fish";
 
     # Don't forget to run 'protonup'!
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${HOME}/.steam/root/compatabilitytools.d";
@@ -103,7 +104,7 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    platformTheme.name = "gtk3";
   };
 
   home.packages = with pkgs; [
