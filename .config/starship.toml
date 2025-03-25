@@ -27,11 +27,11 @@ success_symbol = "[❯](bold fg:green) "
 error_symbol = "[❯](bold fg:red) "
 
 [git_branch]
+format = "on [$symbol $branch(:$remote_branch)](fg:teal)"
 style = "bg: green"
 symbol = "󰘬"
 truncation_length = 6
 truncation_symbol = ".."
-format = "on [$symbol $branch(:$remote_branch)](fg:teal)"
 
 [git_commit]
 format = '[\($hash$tag\)]($style)'
@@ -43,10 +43,13 @@ format = '[\($state( $progress_current of $progress_total)\)]($style) '
 cherry_pick = "[🍒 PICKING](bold red)"
 
 [git_status]
-conflicted = '!!(red)'
-stashed = "📦"
-modified = ' (red)'
-staged = '[++](green)'
+format = '([$all_status$ahead_behind]($style) )'
+conflicted = '󰘭 '
+ahead = '[](green)'
+behind = '[](red)'
+stashed = "[ ](overlay0)"
+modified = '[ ](red)'
+staged = '[ ](green)'
 
 [line_break]
 disabled = false
