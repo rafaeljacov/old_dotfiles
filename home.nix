@@ -144,6 +144,7 @@
     teams-for-linux
     templ
     tldr
+    typst
     typstyle
     udiskie
     watchman
