@@ -6,6 +6,7 @@ import AppLauncher from "./widget/Applauncher"
 import NotifyPopups from "./widget/Notification/NotifyPopups"
 import MonitorSettings from "./widget/MonitorSettings"
 import QuickControl from "./widget/QuickControl/QuickControl"
+import OSD from "./widget/OSD"
 
 const CONFIG_DIR = GLib.get_user_config_dir()
 
@@ -21,6 +22,7 @@ App.start({
     main() {
         App.get_monitors().map(Bar);
         App.get_monitors().map(NotifyPopups);
+        App.get_monitors().map(OSD);
         AppLauncher();
         MonitorSettings();
         QuickControl();
