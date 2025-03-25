@@ -1,5 +1,8 @@
 nixos
+home.nix
 flake.nix
 flake.lock
+.git
 .gitconfig
+.gitignore
 .tmux.conf
