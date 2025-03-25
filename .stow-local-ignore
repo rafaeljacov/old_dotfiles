@@ -1,0 +1,5 @@
+nixos
+flake.nix
+flake.lock
+.gitconfig
+.tmux.conf
