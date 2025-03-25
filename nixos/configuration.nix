@@ -123,6 +123,7 @@
     unzip
     usbutils
     vim
+    wezterm
     wget
     wl-clipboard
     xdg-user-dirs
