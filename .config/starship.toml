@@ -44,12 +44,12 @@ cherry_pick = "[🍒 PICKING](bold red)"
 
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
-conflicted = '󰘭 '
+conflicted = '󰘭'
 ahead = '[](green)'
 behind = '[](red)'
 stashed = "[ ](overlay0)"
 modified = '[ ](red)'
-staged = '[ ](green)'
+staged = '[ ](green)'
 
 [line_break]
 disabled = false
