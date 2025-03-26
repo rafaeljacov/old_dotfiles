@@ -12,7 +12,6 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
-    zen-browser,
     ...
   }: let
     system = "x86_64-linux";
@@ -29,7 +28,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.rafaeljacov = import ./home.nix;
-          home-manager.backupFileExtension = "backup";
+          home-manager.backupFileExtension = "bak";
 
           # use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
