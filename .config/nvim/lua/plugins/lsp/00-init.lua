@@ -39,7 +39,6 @@ return {
                     'emmet_ls',
                     'html',
                     'htmx',
-                    'alejandra',
                     'eslint',
                     'clangd',
                     'templ',
