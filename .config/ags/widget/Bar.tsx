@@ -66,7 +66,7 @@ function BatteryLevel() {
         visible={bind(bat, "isPresent")}>
         <icon icon={bind(bat, "batteryIconName")} />
         <label label={bind(bat, "percentage").as(p =>
-            `${Math.floor(p * 100)} %`
+            `${Math.floor(p * 100)}%`
         )} />
     </box>
 }
