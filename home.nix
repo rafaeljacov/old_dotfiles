@@ -129,6 +129,7 @@
     lua-language-server
     mypy
     neovim
+    nixd
     nodePackages.prettier
     nodejs_23
     protonup
