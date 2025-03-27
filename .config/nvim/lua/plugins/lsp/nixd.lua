@@ -1,3 +1,5 @@
+local nixos_opts = '(builtins.getFlake ("/home/rafaeljacov/dotfiles")).nixosConfigurations.huawei-nixos.options'
+
 return {
     cmd = { 'nixd' },
     settings = {
@@ -10,13 +12,11 @@ return {
             },
             options = {
                 nixos = {
-                    expr =
-                    '(builtins.getFlake ("/home/rafaeljacov/dotfiles")).nixosConfigurations.huawei-nixos.options',
+                    expr = nixos_opts,
                 },
-                -- home_manager = {
-                --     expr =
-                --     '(builtins.getFlake ("/home/rafaeljacov/dotfiles")).homeConfigurations."rafaeljacov@huawei-nixos".options',
-                -- },
+                home_manager = {
+                    expr = nixos_opts .. ".home-manager.users.type.getSubOptions []"
+                },
             },
         }
     }
