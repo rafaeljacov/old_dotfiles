@@ -143,7 +143,6 @@
     swww
     tailwindcss_4
     teams-for-linux
-    templ
     tldr
     typst
     typstyle
