@@ -5,6 +5,8 @@
   system,
   ...
 }: {
+  imports = [./packages];
+
   home.username = "rafaeljacov";
   home.homeDirectory = "/home/rafaeljacov";
 
