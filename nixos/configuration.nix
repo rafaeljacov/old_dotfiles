@@ -16,6 +16,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    # System Packages
+    ./system-packages
+
     # Anime game launcher
     aagl-gtk-on-nix.module
   ];
@@ -100,40 +103,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    alsa-utils
-    brightnessctl
-    docker
-    evince
-    ffmpegthumbnailer
-    file-roller
-    gcc
-    git
-    gnumake
-    go
-    gparted
-    kitty
-    lsof
-    lxqt.lxqt-policykit
-    microsoft-edge
-    pavucontrol
-    python3
-    tmux
-    unzip
-    usbutils
-    vim
-    wezterm
-    wget
-    wl-clipboard
-    xdg-user-dirs
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    xfce.thunar-volman
-    xfce.tumbler
-    zip
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
