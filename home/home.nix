@@ -108,53 +108,6 @@
     platformTheme.name = "gtk3";
   };
 
-  home.packages = with pkgs; [
-    ags
-    air
-    bat
-    black
-    bottles
-    btop
-    chafa
-    ciscoPacketTracer8
-    deno
-    devenv
-    eza
-    fish
-    gofumpt
-    golangci-lint
-    goose
-    gotools
-    grim
-    inputs.zen-browser.packages.${system}.beta
-    krabby
-    lua-language-server
-    mypy
-    neovim
-    nixd
-    nodePackages.prettier
-    nodejs_23
-    protonup
-    ripgrep
-    rustup
-    slurp
-    sqlc
-    sqlfluff
-    starship
-    swappy
-    swww
-    tailwindcss_4
-    teams-for-linux
-    tldr
-    typst
-    typstyle
-    udiskie
-    watchman
-    webcord
-    yazi
-    zoxide
-  ];
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
