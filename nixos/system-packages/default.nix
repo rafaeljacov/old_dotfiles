@@ -30,6 +30,7 @@
     xfce.thunar-media-tags-plugin
     xfce.thunar-volman
     xfce.tumbler
+    zellij
     zip
   ];
 }
