@@ -2,7 +2,6 @@
   environment.systemPackages = with pkgs; [
     alsa-utils
     brightnessctl
-    docker
     evince
     ffmpegthumbnailer
     file-roller

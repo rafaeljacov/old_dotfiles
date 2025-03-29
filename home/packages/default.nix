@@ -5,7 +5,6 @@
 }: {
   home.packages = with pkgs; [
     ags
-    air
     bat
     black
     bottles
@@ -18,7 +17,6 @@
     fish
     gofumpt
     golangci-lint
-    goose
     gotools
     grim
     inputs.zen-browser.packages.${system}.beta
@@ -33,12 +31,10 @@
     ripgrep
     rustup
     slurp
-    sqlc
     sqlfluff
     starship
     swappy
     swww
-    tailwindcss_4
     teams-for-linux
     tldr
     typst
