@@ -17,7 +17,6 @@
     microsoft-edge
     pavucontrol
     python3
-    tmux
     unzip
     usbutils
     vim

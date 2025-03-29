@@ -51,21 +51,6 @@
     '';
   };
 
-  programs.tmux = {
-    enable = true;
-    extraConfig = ''
-      # Catppuccin Mocha Theme
-      set -g status-position bottom
-      set -g status-style bg=#1e1e2e,fg=#cdd6f4
-      set -g message-style bg=#1e1e2e,fg=#cdd6f4
-      set -g message-command-style bg=#1e1e2e,fg=#cdd6f4
-      set -g pane-border-style fg=#313244
-      set -g pane-active-border-style fg=#cba6f7
-      set -g status-left '#[bg=#89b4fa,fg=#1e1e2e,bold] #S #[bg=#1e1e2e,fg=#89b4fa,nobold]'
-      set -g status-right '#[fg=#a6e3a1,bg=#1e1e2e] %Y-%m-%d  %H:%M '
-    '';
-  };
-
   programs.git = {
     enable = true;
     userName = "Rafael Jacov Medel";
